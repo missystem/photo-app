@@ -1,7 +1,7 @@
 body {
   margin: 0px;
   font-family: Arial, Verdana;
-   display: grid;
+   display: grid; 
   grid-template-columns: 4fr 1fr;
   grid-template-rows: 100px 40px auto auto 50px;
   grid-template-areas:
