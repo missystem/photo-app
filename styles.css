@@ -98,7 +98,7 @@ a:hover{
     justify-content: flex-end; */
 }
 
-#stories-panel {
+#main {
     width: 100%;
     /* height: 122px; */
     padding: 16px 0;
@@ -116,12 +116,12 @@ a:hover{
     grid-gap: 30px;
 }
 
-.left-col {
+.left-panel {
     display: flex;
     flex-direction: column;
 }
 
-.status-wrapper {
+#stories {
     width: 100%;
     height: 80px;
     background: #fff;
@@ -135,7 +135,7 @@ a:hover{
     overflow-x: auto;
 }
 
-.status-wrapper::-webkit-scrollbar {
+#stories::-webkit-scrollbar {
     display: none;
 }
 
@@ -178,7 +178,7 @@ a:hover{
    color:rgba(0, 0, 0, 0.5)
 }
 
-.post {
+#posts {
   width: 100%;
   height: 580px;
   /* min-width: 400px; */
@@ -187,16 +187,17 @@ a:hover{
   margin-top: 15px;
 }
 
-/* @media only screen and (max-width: 600px) {
-  section {
-    width: 100%;
-  } */
+
+#recommendation-panel {
+
+}
+
 /*
 Add some style blocks below this line to style the cards.
 Feel free to borrow from Exercise 1.
 */
 /* Tablet Media Query */
-@media only screen and (max-width: 1000px) {
+/* @media only screen and (max-width: 1000px) {
   main {
     flex-wrap: wrap;
   }
@@ -204,75 +205,16 @@ Feel free to borrow from Exercise 1.
   section {
     width: calc(50% - 20px);
   }
-}
+} */
 
 /* MobilePhone Media Query */
-@media only screen and (max-width: 600px) {
+/* @media only screen and (max-width: 600px) {
   section {
     width: 100%;
   }
-}
+} */
 
   /* .recommendation {
       display: hidden;
   } */
 }
-/* body {
-  margin: 0px;
-  font-family: Arial, Verdana;
-   display: grid;
-  grid-template-columns: 4fr 1fr;
-  grid-template-rows: 100px 40px auto auto 50px;
-  grid-template-areas:
-      "banner banner"
-      "nav nav"
-      "article1 aside"
-      "article2 aside"
-      "footer footer";
-  min-height: 100vh;
-}
-
-
-
-
-header {
-  grid-area: banner;
-}
-header h1 {
-  font-family: 'Comfortaa', cursive;
-}
-nav {
-  grid-area: nav;
-}
-aside {
-  grid-area: aside;
-}
-section {
-  grid-area: article1;
-}
-article {
-  grid-area: article2;
-}
-footer {
- grid-area: footer;
-}
-
-header,
-nav,
-section,
-footer,
-aside,
-article {
-  padding: 10px;
-  border: solid 1px #DDD;
-  box-sizing: border-box;
-}
-
-
-header, footer {
-  text-align: left;
-  background-color: #EEE;
-}
-aside {
-  background-color: #DDD;
-} */
