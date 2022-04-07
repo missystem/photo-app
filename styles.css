@@ -15,7 +15,7 @@ body {
     position: relative;
 }
 
-nav {
+#navigation-bar {
     align-items: center;
     display: flex;
     flex-direction: row;
@@ -34,14 +34,14 @@ nav {
     padding: 0 20px;
 }
 
-nav h1 {
+#navigation-bar h1 {
     font-family: 'Comfortaa', cursive;
     font-size: 20px;
     font-weight: bolder;
     justify-content: flex-start;
 }
 
-nav ul {
+#navigation-bar ul {
     list-style: none;
     display: flex;
     flex-direction: row;
@@ -75,12 +75,12 @@ a:hover{
 
 
 #home, #username, #signout {
-  height: calc(100vh - 60px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  scroll-margin-top: 60px;
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    scroll-margin-top: 60px;
 }
 
 #home, #username {
@@ -91,7 +91,13 @@ a:hover{
   font-family: 'Comfortaa', cursive;
 }
 
-#stories {
+#recommendations-panel {
+    /* display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end; */
+}
+
+#stories-panel {
   width: 100%;
   /* height: 122px; */
   padding: 16px 0;
@@ -104,7 +110,7 @@ a:hover{
 .wrapper {
     width: 80%;
     max-width: 1000px;
-    min-width: ;
+    min-width: 600px;
     display: grid;
     grid-template-columns: 70% 30%;
     grid-gap: 30px;
