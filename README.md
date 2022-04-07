@@ -3,8 +3,7 @@
 ## Outline  
 ```
 <body>
-    <nav>
-        
+    <nav id="navigation-bar">
     </nav>
 
     <section id="main">
