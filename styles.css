@@ -194,23 +194,187 @@ a:hover {
     color: rgba(0, 0, 0, 0.5)
 }
 
+/* POSTS */
 #posts {
   border: 1px solid rgb(0, 0, 0);
     width: 100%;
     height: 580px;
     /* min-width: 400px; */
     background: #fff;
-    border: 1px solid #dfdfdf;
+    /* border: 1px solid #dfdfdf; */
     margin-top: 15px;
 }
+.post-top {
+  border: 1px solid rgb(0, 0, 0);
+  display: flex;
+  flex-direction: row;
+  padding: 2px;
+  margin: 3px;
+}
+.post-creator-username {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 2px;
+  margin: 3px;
+  margin-right: 80%;
+}
 
+.post-pic {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 2px;
+  margin: 3px;
+
+  /* overflow: hidden; */
+  /* width: 70px;
+  height: 70px; */
+}
+
+.post-pic img{
+  width: 100%;
+}
+
+.post-bottom {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 2px;
+  margin: 3px;
+}
+
+.row-of-icons {
+  border: 1px solid rgb(0, 0, 0);
+  display: flex;
+  flex-direction: row;
+  padding: 2px;
+  margin: 3px;
+}
+.left-icons {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 2px;
+  display: flex;
+  flex-direction: row;
+  margin: 3px 0;
+  margin-left: 3px;
+  /* margin-right: 85%; */
+}
+.right-icons {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 2px;
+  margin: 3px;
+  align-items: center;
+}
+.icon {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 2px;
+  margin: 3px;
+}
+.num-of-likes {
+  border: 1px solid rgb(0, 0, 0);
+  /* padding: 2px; */
+  margin: 3px;
+}
+._likes {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 2px;
+  margin: 0 5px;
+
+  font-weight: bold;
+}
+
+.caption {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 2px;
+  margin: 3px;
+  display: flex;
+  flex-direction: row;
+  /* flex-wrap:nowrap; */
+}
+.cap-creator {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 2px;
+  margin: 3px;
+  font-weight: bold;
+}
+.cap-test {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 2px;
+  margin: 3px;
+}
+.cap-more {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 2px;
+  margin: 3px;
+}
+
+.comments {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 2px;
+  margin: 3px;
+  display: flex;
+  flex-direction: column;
+}
+.view-comment {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 2px;
+  margin: 3px;
+  font-weight: bold;
+}
+.comment {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 2px;
+  margin: 3px;
+  display: flex;
+  flex-direction: row;
+}
+
+.post-time {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 2px;
+  margin: 3px;
+  font-size: medium;
+  color: #909090;
+}
+
+.add-comment {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 2px;
+  margin: 3px;
+  display: flex;
+  flex-direction: row;
+}
+.comment-section {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 2px;
+  margin: 3px;
+  display: flex;
+  flex-direction: row;
+}
+.smiling-button {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 2px;
+  margin: 3px;
+}
+.comment-box {
+  /* padding: 2px; */
+  /* margin: 3px; */
+  /* padding-right: 20px; */
+}
+.comment-post {
+  border: 1px solid rgb(0, 0, 0);
+  /* padding: 2px;
+  margin: 3px; */
+  padding: 2px;
+}
+.comment-post-button {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 2px;
+}
+/* RIGHT PANEL */
 
 #recommendation-panel {
   border: 1px solid rgb(0, 0, 0);
     width: fit-content;
     padding: 5px;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
 }
 
 #profile-card-self {
