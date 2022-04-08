@@ -231,6 +231,7 @@ a:hover {
   font-family: 'Comfortaa',cursive;
   font-size: 20px;
   font-weight: 700;
+  align-items: center;
 }
 .post-top-icon {
   /* margin-left: 80px; */
@@ -291,8 +292,9 @@ a:hover {
   border: 1px solid rgb(0, 0, 0);
   /* padding: 2px; */
   margin: 3px;
+  align-items: center;
 }
-._likes {
+.num-of-likes ._likes {
   border: 1px solid rgb(0, 0, 0);
   padding: 2px;
   margin: 0 5px;
@@ -307,6 +309,7 @@ a:hover {
   display: flex;
   flex-direction: row;
   /* flex-wrap:nowrap; */
+  align-items: center;
 }
 .cap-creator {
   border: 1px solid rgb(0, 0, 0);
