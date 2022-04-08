@@ -74,7 +74,7 @@
                             <a href="#creator's username">gibsonjack</a>
                         </header>
                         <div class="icon">
-                            <div class="post-top-icon"><i class="far fa-ellipsis-h"></i></div>
+                            <div class="post-top-icon"><i class="fas fa-ellipsis-h"></i></div>
                         </div>
                     </div>
                     <div class="post-pic">
@@ -132,21 +132,23 @@
                         </section>
 
                         <section class="comments">
-                            <div class="comment">
+                            <div class="comment-cards">
                                 <a class="view-comment" href="comment user's name" role="link" tabindex="0">
-                                    <div class="comment-username">
-                                        lizzie
-                                    </div>
+                                    <!-- <div class="comment-username">lizzie</div> -->
+                                    lizzie
                                 </a>
-                                <span>Here is a comment text text text text text text text text.</span>
+                                <div class="comment">
+                                    Here is a comment text text text text text text text text.
+                                </div> 
                             </div>
-                            <div class="comment">
+                            <div class="comment-cards">
                                 <a class="view-comment" href="comment user's name" role="link" tabindex="0">
-                                    <div class="comment-username">
-                                        vanek97
-                                    </div>
+                                    <!-- <div class="comment-username">vanek97</div> -->
+                                    vanek97
                                 </a>
-                                <span>Here is another comment text text text.</span>
+                                <div class="comment">
+                                    Here is another comment text text text.
+                                </div>
                             </div>
                             
                             <div class="post-time">
@@ -164,12 +166,15 @@
                                 </div>
                                 <!-- <textarea class="comment-box" rows="1" cols="60"> -->
                                 <!-- <textarea class="comment-box" rows="1"></textarea></textarea> -->
+                                <form action="/form/submit" method="POST">
                                 <textarea class="comment-box" rows="1" aria-label="Add a comment…" placeholder="Add a comment…"  autocomplete="off"
                                     autocorrect="off"></textarea>
                             </div>
-                            <button class="comment-post" disabled="" type="submit">
+                            <!-- <button class="comment-post" disabled="" type="submit">
                                 <div class="comment-post-button">Post</div>
-                            </button>
+                            </button> -->
+                            <input class="comment-post" type="submit" name="submit" value="Post">
+                            </form>
                             
                         </section>
                         
