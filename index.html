@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photo App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,7 +65,109 @@
                 </div>
 
                 <div id="posts">
+                    <div class="post-top">
+                        <header class="post-creator-username">
+                            <a href="#creater's username">gibsonjack</a>
+                        </header>
+                        <div class="icon">
+                            <i class="far fa-ellipsis-h"></i>
+                        </div>
+                    </div>
+                    <div class="post-pic">
+                        <img alt="creator's picture"
+                            src="https://i.picsum.photos/id/445/4256/2819.jpg?hmac=99qT1IPidZrzaXTgG1ixRRVwElWXUlNepU2k692G44c">
+                    </div>
+                    <div class="post-bottom">
+                        <section class="row-of-icons">
+                            <div class="left-icons">
+                                <div class="icon">
+                                    <i class="far fa-heart"></i>
+                                </div>
+                                <div class="icon">
+                                    <i class="far fa-comment"></i>
+                                </div>
+                                <div class="icon">
+                                    <i class="far fa-paper-plane"></i>
+                                </div>
+                                
+                            </div>
+                            <div class="right-icons">
+                                <div class="icon">
+                                    <i class="far fa-bookmark"></i>
+                                </div>
+                            </div>
+                            <!-- <i class="far f-smile"></i> -->
+                        </section>
 
+                        <section class="num-of-likes">
+                            <div class="_likes">
+                                <span>30</span> likes
+                            </div>
+                        </section>
+
+                        <section class="caption">
+                            <!-- <div class="cap-creator"> -->
+                            <a class="cap-creator" href="creater's username" role="link" tabindex="0">
+                                <span>
+                                    gibsonjack
+                                </span>
+                            </a>
+                                
+                            <!-- </div> -->
+                            <div class="cap-test">
+                                <span>
+                                    Here is a caption about the photo. Text text text text text text text text text text text text text text text text
+                                </span>
+                            </div>
+                            ...&nbsp;
+                            <div aria-disabled="false" role="button" tabindex="0" style="cursor: pointer; display: inline;">
+                                <div class="cap-more">
+                                    more
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="comments">
+                            <div class="comment">
+                                <a class="view-comment" href="comment user's name" role="link" tabindex="0">
+                                    <div class="comment-username">
+                                        lizzie
+                                    </div>
+                                </a>
+                                <span>Here is a comment text text text text text text text text.</span>
+                            </div>
+                            <div class="comment">
+                                <a class="view-comment" href="comment user's name" role="link" tabindex="0">
+                                    <div class="comment-username">
+                                        vanek97
+                                    </div>
+                                </a>
+                                <span>Here is another comment text text text.</span>
+                            </div>
+                            
+                            <div class="post-time">
+                                <time class="timing" datetime="2022-04-07T02:01:30.000Z"
+                                    title="Apr 6, 2022">
+                                    1 DAY AGO
+                                </time>
+                            </div>
+                        </section>
+
+                        <section class="add-comment">
+                            <div class="comment-section">
+                                <div class="icon">
+                                    <i class="far fa-smile"></i>
+                                </div>
+                                <textarea class="comment-box" rows="1" cols="60">
+                                    Add a comment...
+                                </textarea>
+                            </div>
+                            <button class="comment-post" disabled="" type="submit">
+                                <div class="comment-post-button">Post</div>
+                            </button>
+                        </section>
+                        
+                    </div>
                 </div>
             </div>
 
