@@ -16,6 +16,7 @@ body {
   align-items: center;
 }
 
+/* ============================ NAVIGATION ============================ */
 #navigation-bar {
   align-items: center;
   display: flex;
@@ -139,6 +140,7 @@ a:hover {
     height: auto;
 }
 
+/* ============================ STORIES ============================ */
 #stories {
   border: 1px solid rgb(0, 0, 0);
     width: 100%;
@@ -202,6 +204,7 @@ a:hover {
     color: rgba(0, 0, 0, 0.5)
 }
 
+/* ============================ POSTS ============================ */
 /* a series of cards that display a user’s post and associated comments */
 #series-of-post-cards {
   border: 1px solid rgb(0, 0, 0);
@@ -404,17 +407,9 @@ a:hover {
   border: 1px solid rgb(0, 0, 0);
   padding: 2px;
 }
-/* RIGHT PANEL */
 
-/* #recommendation-panel {
-  border: 1px solid rgb(0, 0, 0);
-    width: fit-content;
-    padding: 5px;
-    display: flex;
-    flex-wrap: wrap;
-} */
-/* flex-direction: column; */
 
+/* ============================ RIGHT PANEL ============================ */
 #recommendation-panel {
   border: 1px solid rgb(0, 0, 0);
   width: fit-content;
