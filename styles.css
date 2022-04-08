@@ -100,11 +100,19 @@ a:hover {
   font-family: 'Comfortaa', cursive;
 }
 
+<<<<<<< HEAD
 /* #recommendations-panel {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
 } */
+=======
+#recommendations-panel {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+} 
+>>>>>>> 9927c33755ad30b0a7d1b57a41a500eb7bcd0802
 
 #main {
   width: 100%;
@@ -373,8 +381,7 @@ a:hover {
     width: fit-content;
     padding: 5px;
     display: flex;
-    flex-wrap: wrap;
-    /* flex-direction: column; */
+    flex-direction: column;
 }
 
 #profile-card-self {
@@ -504,22 +511,31 @@ border: 1px solid rgb(0, 0, 0);
     justify-content: flex-end;
 }
 
+#right-panel{
+  padding: 20px;
+}
 
+
+@media (max-width: 1100px) {
+    #recommendation-panel{
+      display: none;
+    }
+
+    .wrapper, .navigation-bar{
+      width: 90%;
+    }
+
+    .wrapper{
+      display: block;
+    }
+}
 
 /*
-Add some style blocks below this line to style the cards.
-Feel free to borrow from Exercise 1.
-*/
-/* Tablet Media Query */
-/* @media only screen and (max-width: 1140px) {
-    main {
-        flex-wrap: wrap;
-    }
+@media (max-width: 500px){
 
-    section {
-        width: calc(50% - 20px);
-    }
-} */
+
+}
+*/
 
 /* MobilePhone Media Query */
 /* @media only screen and (max-width: 600px) {
@@ -532,3 +548,4 @@ Feel free to borrow from Exercise 1.
         display: hidden;
     }
 } */
+ 
