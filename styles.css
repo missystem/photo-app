@@ -1,0 +1,380 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body * {
+  box-sizing: border-box;
+}
+
+body {
+  /* background-color: #DDD; */
+  background-color: #efefef;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  width: 100%;
+  position: relative;
+  align-items: center;
+}
+
+#navigation-bar {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  height: 60px;
+  background: #fff;
+  background-color: rgb(255, 255, 255);
+  border-bottom: 1px solid #dfdfdf;
+  /* padding-left: 20px;
+  padding-right: 20px; */
+  padding: 0 20px;
+}
+
+#navigation-bar h1 {
+  font-family: 'Comfortaa', cursive;
+  font-size: 20px;
+  font-weight: bolder;
+  justify-content: flex-start;
+}
+
+#navigation-bar ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  width: 200px;
+  font-size: 11px;
+  position: relative;
+}
+
+.gibsonjack {
+  margin-right: 10px;
+}
+
+/* ul, li, h1 {
+  margin: 0px;
+  padding: 0px;
+} */
+
+a,
+a:link,
+a:hover,
+a:visited {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  /* font-weight: bold; */
+  /* padding: 5px; */
+  border-bottom: solid 3px transparent;
+}
+
+a:hover {
+  color: rgb(101, 36, 145);
+  text-decoration: none;
+  border-bottom: solid 3px rgb(101, 36, 145);
+}
+
+
+#home,
+#username,
+#signout {
+  height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  scroll-margin-top: 60px;
+}
+
+#home,
+#username {
+  background: #f2f2f2;
+}
+
+#home {
+  font-family: 'Comfortaa', cursive;
+}
+
+#recommendations-panel {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+} 
+
+#main {
+  width: 100%;
+  /* height: 122px; */
+  padding: 16px 0;
+  display: flex;
+  justify-content: center;
+  margin-top: 65px;
+
+}
+
+.wrapper {
+  border: 1px solid rgb(0, 0, 0);
+    padding: 10px;
+    width: 80%;
+    max-width: 1140px;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-gap: 30px;
+}
+
+.left-panel {
+  border: 1px solid rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+}
+
+#stories {
+  border: 1px solid rgb(0, 0, 0);
+    width: 100%;
+    height: 80px;
+    background: #fff;
+    border: 1px solid #dfdfdf;
+    border-radius: 2px;
+    padding: 10px;
+    padding-right: 0;
+    display: flex;
+    align-items: center;
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+#stories::-webkit-scrollbar {
+    display: none;
+}
+
+.status-card {
+  border: 1px solid rgb(0, 0, 0);
+    flex: 0 0 auto;
+    width: 55px;
+    max-width: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    margin-right: 5px;
+
+}
+
+.profile-pic {
+  border: 1px solid rgb(0, 0, 0);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    padding: 3px;
+    background: linear-gradient(45deg, rgb(220, 220, 220), rgb(220, 220, 220) 100%);
+    /* background: linear-gradient(45deg, rgb(255, 230, 0), rgb(255, 0, 128) 80%); */
+}
+
+.profile-pic img {
+  border: 1px solid rgb(0, 0, 0);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    /* border: 1px solid #fff; */
+}
+
+.username {
+  border: 1px solid rgb(0, 0, 0);
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+    font-size: 9px;
+    margin-top: 5px;
+    color: rgba(0, 0, 0, 0.5)
+}
+
+#posts {
+  border: 1px solid rgb(0, 0, 0);
+    width: 100%;
+    height: 580px;
+    /* min-width: 400px; */
+    background: #fff;
+    border: 1px solid #dfdfdf;
+    margin-top: 15px;
+}
+
+
+#recommendation-panel {
+  border: 1px solid rgb(0, 0, 0);
+    width: fit-content;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+#profile-card-self {
+  border: 1px solid rgb(0, 0, 0);
+    display: flex;
+}
+
+#profile-pic-self {
+border: 1px solid rgb(0, 0, 0);
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+#profile-pic-self img {
+border: 1px solid rgb(0, 0, 0);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+#username-self {
+border: 1px solid rgb(0, 0, 0);
+  font-family: 'Comfortaa', cursive;
+  font-weight: 800;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  margin-top: 25px;
+  font-size: 30px;
+  border-radius: 2px;
+
+}
+
+.suggestions {
+  border: 1px solid rgb(0, 0, 0);
+    margin-top: 10px;
+}
+
+
+.suggestions-for-you {
+  border: 1px solid rgb(0, 0, 0);
+    /* display: flex;
+    justify-content: flex-start;
+    align-items: flex-start; */
+    padding: 5px 5px;
+    margin: 5px 10px;
+    /* margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 6px;
+    margin-bottom: 3px; */
+    font-weight: 700;
+    font-size: large;
+    /* margin-left: 0; */
+    text-align: left;
+    color: #909090;
+}
+
+.sug-card {
+  border: 1px solid rgb(0, 0, 0);
+    padding: 10px;
+    margin: 5px 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.sug-prof-pic {
+  border: 1px solid rgb(0, 0, 0);
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    margin-top: 15px;
+    margin-right: 5px;
+    justify-content: flex-start;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.sug-prof-pic img {
+  border: 1px solid rgb(0, 0, 0);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.sug-user-card {
+  border: 1px solid rgb(0, 0, 0);
+    padding: 5px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.sug-user-name {
+  border: 1px solid rgb(0, 0, 0);
+    /* margin-right: 20px; */
+    display: flex;
+    overflow: hidden;
+    padding: 3px;
+    margin: 3px 0;
+    font-weight: 700;
+
+}
+
+.suggested-for-you {
+  border: 1px solid rgb(0, 0, 0);
+    /* margin-right: 10px; */
+    display: flex;
+    padding: 3px;
+    margin: 3px 0;
+    font-size: 12px;
+    color: #a0a0a0;
+}
+
+.follow {
+  border: 1px solid rgb(0, 0, 0);
+    display: flex;
+    padding: 3px;
+    padding-right: 20px;
+    
+    /* margin: 0 10px; */
+    margin-left: 5px;
+    justify-content: flex-end;
+}
+
+#right-panel{
+  padding: 20px;
+}
+
+
+@media (max-width: 1100px) {
+    #recommendation-panel{
+      display: none;
+    }
+
+    .wrapper, .navigation-bar{
+      width: 90%;
+    }
+
+    .wrapper{
+      display: block;
+    }
+}
+
+/*
+@media (max-width: 500px){
+
+
+}
+*/
+
+/* MobilePhone Media Query */
+/* @media only screen and (max-width: 600px) {
+    section {
+        width: 100%;
+    }
+
+
+    #recommendation-panel {
+        display: hidden;
+    }
+} */
+ 
