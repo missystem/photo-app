@@ -15,6 +15,7 @@
 
 <body>
 
+    <!-- navigation bar -->
     <nav id="navigation-bar">
         <h1><a href="#home">Photo App</a></h1>
         <ul>
@@ -26,6 +27,8 @@
     <section id="main">
         <div class="wrapper">
             <div class="left-panel">
+
+                <!-- stories panel -->
                 <div id="stories">
                     <div class="status-card">
                         <div class="profile-pic">
@@ -64,13 +67,14 @@
                     </div>
                 </div>
 
-                <div id="posts">
+                <!-- a series of cards that display a user’s post and associated comments -->
+                <div id="series-of-post-cards">
                     <div class="post-top">
                         <header class="post-creator-username">
-                            <a href="#creater's username">gibsonjack</a>
+                            <a href="#creator's username">gibsonjack</a>
                         </header>
                         <div class="icon">
-                            <i class="far fa-ellipsis-h"></i>
+                            <div class="post-top-icon"><i class="far fa-ellipsis-h"></i></div>
                         </div>
                     </div>
                     <div class="post-pic">
@@ -107,7 +111,7 @@
 
                         <section class="caption">
                             <!-- <div class="cap-creator"> -->
-                            <a class="cap-creator" href="creater's username" role="link" tabindex="0">
+                            <a class="cap-creator" href="creator's username" role="link" tabindex="0">
                                 <span>
                                     gibsonjack
                                 </span>
@@ -158,19 +162,22 @@
                                 <div class="icon">
                                     <i class="far fa-smile"></i>
                                 </div>
-                                <textarea class="comment-box" rows="1" cols="60">
-                                    Add a comment...
-                                </textarea>
+                                <!-- <textarea class="comment-box" rows="1" cols="60"> -->
+                                <!-- <textarea class="comment-box" rows="1"></textarea></textarea> -->
+                                <textarea class="comment-box" rows="1" aria-label="Add a comment…" placeholder="Add a comment…"  autocomplete="off"
+                                    autocorrect="off"></textarea>
                             </div>
                             <button class="comment-post" disabled="" type="submit">
                                 <div class="comment-post-button">Post</div>
                             </button>
+                            
                         </section>
                         
                     </div>
                 </div>
             </div>
 
+            <!-- recommendation panel -->
             <div id="recommendation-panel">
                 <div id="profile-card-self">
                     <div id="profile-pic-self">
@@ -199,6 +206,9 @@
                                 </p>
                             </div>
                             <a class="follow" href="follow">follow</a>
+                            <!-- <button class="_9-93 _9-94 _9-98" type="button">
+                                <div class="_9_68 _9_6a _9_6i _9_6t">Follow</div>
+                            </button> -->
                         </div>
 
                         <div class="sug-card">
