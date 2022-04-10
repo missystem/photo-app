@@ -104,24 +104,25 @@ a:hover {
   font-family: 'Comfortaa', cursive;
 }
 
-#recommendations-panel {
+/* #recommendations-panel {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
-}
+  position: fixed;
+} */
 
 #main {
-  width: 100%;
-  /* height: 122px; */
-  padding: 16px 0;
-  display: flex;
-  justify-content: center;
-  margin-top: 65px;
+    width: 100%;
+    /* height: 122px; */
+    padding: 16px 0;
+    display: flex;
+    justify-content: center;
+    margin-top: 65px;
 }
 
 .wrapper {
-  border: 1px solid rgb(0, 0, 0);
-    padding: 10px;
+  /* border: 1px solid rgb(0, 0, 0); */
+    /* padding: 10px; */
     width: 80%;
     max-width: 1140px;
     display: grid;
@@ -132,10 +133,10 @@ a:hover {
 }
 
 .left-panel {
-  border: 1px solid rgb(0, 0, 0);
+  /* border: 1px solid rgb(0, 0, 0); */
     display: flex;
     flex-direction: column;
-    padding: 5px;
+    /* padding: 5px; */
     /* padding-bottom: 225px; */
     height: auto;
 }
@@ -144,7 +145,7 @@ a:hover {
 #stories {
   border: 1px solid rgb(0, 0, 0);
     width: 100%;
-    height: 80px;
+    height: 90px;
     background: #fff;
     border: 1px solid #dfdfdf;
     border-radius: 2px;
@@ -415,20 +416,25 @@ a:hover {
 
 /* ============================ RIGHT PANEL ============================ */
 #recommendation-panel {
-  border: 1px solid rgb(0, 0, 0);
-  width: fit-content;
-  padding: 5px;
-  display: flex;
-  flex-direction: column;
+  /* border: 1px solid rgb(0, 0, 0); */
+    
+    top: 70px;
+    left: 66%;
+    position: fixed;
+    width: fit-content;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+  
 }
 
 #profile-card-self {
-  border: 1px solid rgb(0, 0, 0);
+  /* border: 1px solid rgb(0, 0, 0); */
     display: flex;
 }
 
 #profile-pic-self {
-border: 1px solid rgb(0, 0, 0);
+/* border: 1px solid rgb(0, 0, 0); */
   width: 70px;
   height: 70px;
   overflow: hidden;
@@ -437,15 +443,14 @@ border: 1px solid rgb(0, 0, 0);
 }
 
 #profile-pic-self img {
-border: 1px solid rgb(0, 0, 0);
+/* border: 1px solid rgb(0, 0, 0); */
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
 }
-
 #username-self {
-border: 1px solid rgb(0, 0, 0);
+/* border: 1px solid rgb(0, 0, 0); */
   font-family: 'Comfortaa', cursive;
   font-weight: 800;
   justify-content: center;
@@ -456,15 +461,12 @@ border: 1px solid rgb(0, 0, 0);
   border-radius: 2px;
 
 }
-
 .suggestions {
-  border: 1px solid rgb(0, 0, 0);
+  /* border: 1px solid rgb(0, 0, 0); */
     margin-top: 10px;
 }
-
-
 .suggestions-for-you {
-  border: 1px solid rgb(0, 0, 0);
+  /* border: 1px solid rgb(0, 0, 0); */
     /* display: flex;
     justify-content: flex-start;
     align-items: flex-start; */
@@ -480,17 +482,15 @@ border: 1px solid rgb(0, 0, 0);
     text-align: left;
     color: #909090;
 }
-
 .sug-card {
-  border: 1px solid rgb(0, 0, 0);
+  /* border: 1px solid rgb(0, 0, 0); */
     padding: 10px;
     margin: 5px 10px;
     display: flex;
     flex-direction: row;
 }
-
 .sug-prof-pic {
-  border: 1px solid rgb(0, 0, 0);
+  /* border: 1px solid rgb(0, 0, 0); */
     width: 40px;
     height: 40px;
     overflow: hidden;
@@ -500,7 +500,6 @@ border: 1px solid rgb(0, 0, 0);
     object-fit: cover;
     border-radius: 50%;
 }
-
 .sug-prof-pic img {
   /* border: 1px solid rgb(0, 0, 0); */
     width: 100%;
@@ -508,17 +507,15 @@ border: 1px solid rgb(0, 0, 0);
     object-fit: cover;
     border-radius: 50%;
 }
-
 .sug-user-card {
-  border: 1px solid rgb(0, 0, 0);
+  /* border: 1px solid rgb(0, 0, 0); */
     padding: 3px;
     justify-content: center;
     display: flex;
     flex-direction: column;
 }
-
 .sug-user-name {
-  border: 1px solid rgb(0, 0, 0);
+  /* border: 1px solid rgb(0, 0, 0); */
     /* margin-right: 20px; */
     display: flex;
     overflow: hidden;
@@ -526,9 +523,8 @@ border: 1px solid rgb(0, 0, 0);
     margin: 3px 0;
     font-weight: 700;
 }
-
 .suggested-for-you {
-  border: 1px solid rgb(0, 0, 0);
+  /* border: 1px solid rgb(0, 0, 0); */
     /* margin-right: 10px; */
     display: flex;
     padding: 3px;
@@ -536,9 +532,8 @@ border: 1px solid rgb(0, 0, 0);
     font-size: 12px;
     color: #a0a0a0;
 }
-
 .follow {
-  border: 1px solid rgb(0, 0, 0);
+  /* border: 1px solid rgb(0, 0, 0); */
     display: flex;
     padding: 3px;
     padding-right: 20px;
@@ -566,8 +561,8 @@ Add some style blocks below this line to style the cards.
 
     .wrapper,
     .navigation-bar {
-        /* width: 90%; */
-        width: 100%;
+        width: 90%;
+        /* width: 100%; */
     }
 
     .wrapper {
@@ -576,11 +571,17 @@ Add some style blocks below this line to style the cards.
 }
 
 /* MobilePhone Media Query */
-/* @media only screen and (max-width: 600px) {
-    section {
+@media only screen and (max-width: 600px) {
+    /* section {
         width: 100%;
     }
     #recommendation-panel {
         display: hidden;
+    } */
+    #navigation-bar #ul {
+        margin: 0 5px;
     }
-} */
+    .post-pic {
+        height: 300px;
+    }
+}
