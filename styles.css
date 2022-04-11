@@ -79,34 +79,34 @@ a:visited {
     border-bottom: solid 3px transparent;
 }
 
-a:hover {
-  color: rgb(101, 36, 145);
-  text-decoration: none;
-  border-bottom: solid 3px rgb(101, 36, 145);
-}
+/* a:hover {
+    color: rgb(101, 36, 145);
+    text-decoration: none;
+    border-bottom: solid 3px rgb(101, 36, 145);
+} */
 
 
 #home,
 #username,
 #signout {
-  height: calc(100vh - 60px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  scroll-margin-top: 60px;
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    scroll-margin-top: 60px;
 }
 #signout {
-  color: #0000EE;
+    color: #0000EE;
 }
 
 #home,
 #username {
-  background: #f2f2f2;
+    background: #f2f2f2;
 }
 
 #home {
-  font-family: 'Comfortaa', cursive;
+    font-family: 'Comfortaa', cursive;
 }
 
 #main {
