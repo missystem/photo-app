@@ -71,6 +71,8 @@ a:link,
 a:hover,
 a:visited {
     /* color: rgb(0, 0, 0); */
+    color: #0f579f;
+    /* color: dodgerblue; */
     text-decoration: none;
     /* font-weight: bold; */
     /* padding: 5px; */
