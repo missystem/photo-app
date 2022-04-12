@@ -606,7 +606,7 @@ Add some style blocks below this line to style the cards.
 }
 
 /* MobilePhone Media Query */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700x) {
     /* section {
         width: 100%;
     }
