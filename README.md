@@ -1,6 +1,11 @@
-# photo-app
+## Installation
 
-## Outline  
+## Instructions
+* [HW1 instruction](https://cs396-web-dev.github.io/spring2022/assignments/hw01#navbar)  
+* [HW2 instruction](https://cs396-web-dev.github.io/spring2022/assignments/hw02)  
+   
+---  
+## HW1 Outline  
 ```
 <body>
     <nav id="navigation-bar">
@@ -19,4 +24,6 @@
     </section>
 </body>
 ```
+
+
   
