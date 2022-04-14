@@ -1,9 +1,8 @@
-# photo-app
+## Installation
 
-## Part 1: Setup  
-  
-1. Create two files  
-Create a folder called photo-app. Inside of it, create two files – an HTML file called index.html and a CSS file called styles.css.  
+See Lab 2 (https://cs396-web-dev.github.io/spring2022/assignments/lab02) for instructions on how to:
 
-2. Create a new GitHub repository  
-Log into GitHub and create a new private GitHub repository. Name it photo-app. Please make it private so that others cannot see your code (for academic integrity considerations).  
+1. set up your virtual environment,
+2. install the dependencies,
+3. set up the Flask environment variables, and 
+4. run your Flask app
