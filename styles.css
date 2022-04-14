@@ -1,3 +1,4 @@
+
 html {
     scroll-behavior: smooth;
 }
@@ -109,6 +110,8 @@ a:visited {
     font-family: 'Comfortaa', cursive;
 }
 
+/*-----------------------------------main(include right panel and left panel)----------------------------------------- */
+
 #main {
     width: 100%;
     /* height: 122px; */
@@ -118,6 +121,7 @@ a:visited {
     margin-top: 53px;
 }
 
+/*----------------------------------wrapper------------------------------- */
 .wrapper {
   /* border: 1px solid rgb(0, 0, 0); */
     /* padding: 10px; */
@@ -129,6 +133,9 @@ a:visited {
     /* padding-bottom: 10px; */
     
 }
+
+
+/*--------------------------------left panel (includes stories and posts)----------------------------- */
 
 .left-panel {
   /* border: 1px solid rgb(0, 0, 0); */
@@ -443,7 +450,7 @@ a:visited {
 }
 
 
-/* ============================ RIGHT PANEL ============================ */
+/* ============================ RIGHT PANEL (recommendations panel) ============================ */
 #recommendation-panel {
   /* border: 1px solid rgb(0, 0, 0); */
     top: 70px;
@@ -583,11 +590,7 @@ a:visited {
 }
 
 
-
-/*
-Add some style blocks below this line to style the cards.
-*/
-
+/*  -------------------------- control recommendation panel to disappear when browser size changed ------------*/
 /* @media (max-width: 1140px) { */
 @media only screen and (max-width: 1140px) {
     #recommendation-panel {
