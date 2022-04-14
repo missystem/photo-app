@@ -87,7 +87,6 @@ a:visited {
 } */
 
 
-#home,
 #username,
 #signout {
     height: calc(100vh - 60px);
@@ -101,14 +100,10 @@ a:visited {
     color: #0000EE;
 }
 
-#home,
 #username {
     background: #f2f2f2;
 }
 
-#home {
-    font-family: 'Comfortaa', cursive;
-}
 
 /*-----------------------------------main(include right panel and left panel)----------------------------------------- */
 
