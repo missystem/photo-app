@@ -29,15 +29,8 @@ Credits:
 
 <body>
     <!-- ========================== Navigation Bar ========================== -->
-    <nav id="navigation-bar">
-        <!-- The title of the app (or logo)  -->
-        <h1>Photo App</h1>
-        <!-- The username and log out button -->
-        <ul>
-            <div class="gibsonjack">gibsonjack</div>
-            <li><a class="signout" href="signout">Sign out</a></li>
-        </ul>
-    </nav>
+    {% include 'includes/navbar.html' %}
+
 
     <section id="main">
         <div class="wrapper">
@@ -575,113 +568,7 @@ Credits:
 <!-- =========================== Recommendation Panel =========================== -->
     <section id="main">
         <div class="wrapper">
-            <div id="recommendation-panel">
-                <!-- ======================== Personal Card ======================== -->
-                <!-- A circular profile pic of the current user -->
-                <div id="profile-card-self">
-                    <div id="profile-pic-self">
-                        <img alt="gouldjennifer's profile picture" draggable="false"
-                            src="https://i.picsum.photos/id/1053/3596/2393.jpg?hmac=shru06Q5TiVeHArvSrQdBwclhorTJwYGnprqLqaH0hk">
-                    </div>
-                    <!-- a username of the current user -->
-                    <div>
-                        <p id="username-self">gibsonjack</p>
-                    </div>
-                </div>
-                
-                <!-- “Suggestions for you” text -->
-                <div class="suggestions-for-you">Suggestions for you</div>
-
-                <!-- =========================== Suggested Users =========================== -->
-                <!-- 5 suggested accounts -->
-                <div class="suggestions">
-                    <!-- ======================= First User Card ======================= -->
-                    <div class="user-profile-card">
-                        <div class="sug-profile-card">
-                            <!-- photo of a suggested account -->
-                            <div class="sug-prof-pic">
-                                <img alt="amandahudson's profile picture" draggable="false"
-                                    src="https://i.picsum.photos/id/1056/3988/2720.jpg?hmac=qX6hO_75zxeYI7C-1TOspJ0_bRDbYInBwYeoy_z_h08">
-                            </div>
-                            <div class="sug-user-card">
-                                <p>
-                                    <!-- username of a suggested account -->
-                                    <div class="sug-user-name">amandahudson</div>
-                                    <!-- “suggested for you” text below the username -->
-                                    <div class="suggested-for-you">suggested for you</div>
-                                </p>
-                            </div>
-                        </div>
-                        <!-- link to “follow” the user -->
-                        <!-- the “follow” link should be blue but not have an underline -->
-                        <a class="follow-action-button" href="#">follow</a>
-                    </div>
-                    <!-- ======================= Second User Card ======================= -->
-                    <div class="user-profile-card">
-                        <div class="sug-profile-card">
-                            <div class="sug-prof-pic">
-                                <img alt="qthornton's profile picture" draggable="false"
-                                    src="https://i.picsum.photos/id/1080/6858/4574.jpg?hmac=qMYBjROs2Wu589QQXRAYsxDJu4ZuRQ4PKDpb3x_Oouw">
-                            </div>
-                            <div class="sug-user-card">
-                                <p>
-                                <div class="sug-user-name">amandahudson</div>
-                                <div class="suggested-for-you">suggested for you</div>
-                                </p>
-                            </div>
-                        </div>
-                        <a class="follow-action-button" href="#">follow</a>
-                    </div>
-                    <!-- ======================= Third User Card ======================= -->
-                    <div class="user-profile-card">
-                        <div class="sug-profile-card">
-                            <div class="sug-prof-pic">
-                                <img alt="ynelson's profile picture" draggable="false"
-                                    src="https://i.picsum.photos/id/1082/5416/3611.jpg?hmac=GrASx5oGYbTwT4xyJDYkurgXFFfgj37WHvaJNe8Sr1E">
-                            </div>
-                            <div class="sug-user-card">
-                                <p>
-                                <div class="sug-user-name">amandahudson</div>
-                                <div class="suggested-for-you">suggested for you</div>
-                                </p>
-                            </div>
-                        </div>
-                        <a class="follow-action-button" href="#">follow</a>
-                    </div>
-                    <!-- ======================= Fourth User Card ======================= -->
-                    <div class="user-profile-card">
-                        <div class="sug-profile-card">
-                            <div class="sug-prof-pic">
-                                <img alt="lauralyons's profile picture" draggable="false"
-                                    src="https://i.picsum.photos/id/145/4288/2848.jpg?hmac=UkhcwQUE-vRBFXzDN1trCwWigpm7MXG5Bl5Ji103QG4">
-                            </div>
-                            <div class="sug-user-card">
-                                <p>
-                                <div class="sug-user-name">amandahudson</div>
-                                <div class="suggested-for-you">suggested for you</div>
-                                </p>
-                            </div>
-                        </div>
-                        <a class="follow-action-button" href="#">follow</a>
-                    </div>
-                    <!-- ======================= Fifth User Card ======================= -->
-                    <div class="user-profile-card">
-                        <div class="sug-profile-card">
-                            <div class="sug-prof-pic">
-                                <img alt="robertsonkristen's profile picture" draggable="false"
-                                    src="https://i.picsum.photos/id/152/3888/2592.jpg?hmac=M1xv1MzO9xjf5-tz1hGR9bQpNt973ANkqfEVDW0-WYU">
-                            </div>
-                            <div class="sug-user-card">
-                                <p>
-                                <div class="sug-user-name">amandahudson</div>
-                                <div class="suggested-for-you">suggested for you</div>
-                                </p>
-                            </div>
-                        </div>
-                        <a class="follow-action-button" href="#">follow</a>
-                    </div>
-                </div>
-            </div>
+            {% include 'includes/suggestions.html' %}
 
         </div>
     </section>
