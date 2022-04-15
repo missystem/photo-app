@@ -8,6 +8,7 @@ bin-release/
 .settings/
 __pycache__/
 env/
+env/lib/
 
 # Executables
 *.swf
