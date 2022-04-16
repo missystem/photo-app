@@ -1,44 +1,59 @@
+<!--
+Within stories.html, ensure that all of the hardcoded images and 
+usernames (outlined in pink) are replaced by data stored in the 
+stories context variable. You will need to use a loop.
+-->
 <div id="stories">
     <!-- ---------------- the first story ---------------- -->
     <div class="status-card">
         <!-- a circular profile pic on top -->
         <div class="profile-pic">
-            <img alt="gouldjennifer's profile picture" draggable="false"
-                src="https://i.picsum.photos/id/1053/3596/2393.jpg?hmac=shru06Q5TiVeHArvSrQdBwclhorTJwYGnprqLqaH0hk">
+            <img alt="user1's profile picture" draggable="false"
+                src="{{ stories[0].get('user')['image_url'] }}">
         </div>
         <!-- a username underneath -->
-        <p class="username" href="#gouldjennifer">{{ stories[0].get('username') }}</p>
+        <p class="username" href="#">{{ stories[0].get('user')['username'] }}</p>
     </div>
     <!-- ---------------- the second story ---------------- -->
     <div class="status-card">
         <div class="profile-pic">
-            <img alt="matthew16's profile picture" draggable="false"
-                src="{{ stories[0].get('username')[0] }}">
+            <img alt="user2's profile picture" draggable="false"
+                src="{{ stories[1].get('user')['image_url'] }}">
         </div>
-        <p class="username" href="matthew16">matthew16</p>
+        <p class="username" href="#">{{ stories[1].get('user')['username'] }}</p>
     </div>
     <!-- ---------------- the third story ---------------- -->
     <div class="status-card">
         <div class="profile-pic">
-            <img alt="sanchezjill's profile picture" draggable="false"
-                src="https://i.picsum.photos/id/675/4000/2678.jpg?hmac=dI439_tuOEIMX0N4cq-1I7r90tb6pgf23IqluEbA6oo">
+            <img alt="user3's profile picture" draggable="false"
+                src="{{ stories[2].get('user')['image_url'] }}">
         </div>
-        <p class="username" href="sanchezjill">sanchezjill</p>
+        <p class="username" href="#">{{ stories[2].get('user')['username'] }}</p>
     </div>
     <!-- ---------------- the fourth story ---------------- -->
     <div class="status-card">
         <div class="profile-pic">
-            <img alt="gloria62's profile picture" draggable="false"
-                src="https://i.picsum.photos/id/887/6728/4486.jpg?hmac=bkV_QfsAtgFIUd6NDUX5jlrxztAz7AfIVpDUoB58t3Y">
+            <img alt="user4's profile picture" draggable="false"
+                src="{{ stories[3].get('user')['image_url'] }}">
         </div>
-        <p class="username" href="gloria62">gloria62</p>
+        <p class="username" href="#">{{ stories[3].get('user')['username'] }}</p>
     </div>
     <!-- ---------------- the fifth story ---------------- -->
     <div class="status-card">
         <div class="profile-pic">
-            <img alt="jwright's profile picture" draggable="false"
-                src="https://i.picsum.photos/id/685/3000/2000.jpg?hmac=GLauGOEYjS7xOFx_wgC1vpX7_QRZNjtK4Dk-1OCZ1BI">
+            <img alt="user5's profile picture" draggable="false"
+                src="{{ stories[4].get('user')['image_url'] }}">
         </div>
-        <p class="username" href="jwright">jwright</p>
+        <p class="username" href="#">{{ stories[4].get('user')['username'] }}</p>
     </div>
+    <!-- ---------------- the sixth story ---------------- -->
+    <!--
+    <div class="status-card">
+        <div class="profile-pic">
+            <img alt="user5's profile picture" draggable="false"
+                src="{{ stories[5].get('user')['image_url'] }}">
+        </div>
+        <p class="username" href="#">{{ stories[5].get('user')['username'] }}</p>
+    </div>
+    -->
 </div>

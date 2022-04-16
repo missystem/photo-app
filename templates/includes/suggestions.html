@@ -1,112 +1,115 @@
-<section id="main">
-    <div class="wrapper">
-        <div id="recommendation-panel">
-            <!-- ======================== Personal Card ======================== -->
-            <!-- A circular profile pic of the current user -->
-            <div id="profile-card-self">
-                <div id="profile-pic-self">
-                    <img alt="gouldjennifer's profile picture" draggable="false"
-                        src="https://i.picsum.photos/id/1053/3596/2393.jpg?hmac=shru06Q5TiVeHArvSrQdBwclhorTJwYGnprqLqaH0hk">
-                </div>
-                <!-- a username of the current user -->
-                <div>
-                    <p id="username-self">{{ user.get('username') }}</p>
-                </div>
-            </div>
-            
-            <!-- “Suggestions for you” text -->
-            <div class="suggestions-for-you">Suggestions for you</div>
+<!--
+Within suggestions.html, 
+ensure that all of the hardcoded content (outlined in pink) is replaced 
+by data stored in the suggestions and user context variables. This includes:
+* The current user’s username and profile pic, which should come from user
+* Each of the suggested user accounts, which should come from suggestions.
+-->
 
-            <!-- =========================== Suggested Users =========================== -->
-            <!-- 5 suggested accounts -->
-            <div class="suggestions">
-                <!-- ======================= First User Card ======================= -->
-                <div class="user-profile-card">
-                    <div class="sug-profile-card">
-                        <!-- photo of a suggested account -->
-                        <div class="sug-prof-pic">
-                            <img alt="amandahudson's profile picture" draggable="false"
-                                src="{{ suggestions[0].get('image_url') }}">
-                        </div>
-                        <div class="sug-user-card">
-                            <p>
-                                <!-- username of a suggested account -->
-                                <div class="sug-user-name">{{ suggestions[0].get('username') }}</div>
-                                <!-- “suggested for you” text below the username -->
-                                <div class="suggested-for-you">suggested for you</div>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- link to “follow” the user -->
-                    <!-- the “follow” link should be blue but not have an underline -->
-                    <a class="follow-action-button" href="#">follow</a>
-                </div>
-                <!-- ======================= Second User Card ======================= -->
-                <div class="user-profile-card">
-                    <div class="sug-profile-card">
-                        <div class="sug-prof-pic">
-                            <img alt="qthornton's profile picture" draggable="false"
-                                src="{{ suggestions[1].get('image_url') }}">
-                        </div>
-                        <div class="sug-user-card">
-                            <p>
-                            <div class="sug-user-name">{{ suggestions[1].get('username') }}</div>
-                            <div class="suggested-for-you">suggested for you</div>
-                            </p>
-                        </div>
-                    </div>
-                    <a class="follow-action-button" href="#">follow</a>
-                </div>
-                <!-- ======================= Third User Card ======================= -->
-                <div class="user-profile-card">
-                    <div class="sug-profile-card">
-                        <div class="sug-prof-pic">
-                            <img alt="ynelson's profile picture" draggable="false"
-                                src="{{ suggestions[2].get('image_url') }}">
-                        </div>
-                        <div class="sug-user-card">
-                            <p>
-                            <div class="sug-user-name">{{ suggestions[2].get('username') }}</div>
-                            <div class="suggested-for-you">suggested for you</div>
-                            </p>
-                        </div>
-                    </div>
-                    <a class="follow-action-button" href="#">follow</a>
-                </div>
-                <!-- ======================= Fourth User Card ======================= -->
-                <div class="user-profile-card">
-                    <div class="sug-profile-card">
-                        <div class="sug-prof-pic">
-                            <img alt="lauralyons's profile picture" draggable="false"
-                                src="{{ suggestions[3].get('image_url') }}">
-                        </div>
-                        <div class="sug-user-card">
-                            <p>
-                            <div class="sug-user-name">{{ suggestions[3].get('username') }}</div>
-                            <div class="suggested-for-you">suggested for you</div>
-                            </p>
-                        </div>
-                    </div>
-                    <a class="follow-action-button" href="#">follow</a>
-                </div>
-                <!-- ======================= Fifth User Card ======================= -->
-                <div class="user-profile-card">
-                    <div class="sug-profile-card">
-                        <div class="sug-prof-pic">
-                            <img alt="robertsonkristen's profile picture" draggable="false"
-                                src="{{ suggestions[0].get('image_url') }}">
-                        </div>
-                        <div class="sug-user-card">
-                            <p>
-                            <div class="sug-user-name">{{ suggestions[4].get('username') }}</div>
-                            <div class="suggested-for-you">suggested for you</div>
-                            </p>
-                        </div>
-                    </div>
-                    <a class="follow-action-button" href="#">follow</a>
-                </div>
-            </div>
+<div id="recommendation-panel">
+    <!-- ======================== Personal Card ======================== -->
+    <!-- A circular profile pic of the current user -->
+    <div id="profile-card-self">
+        <div id="profile-pic-self">
+            <img alt="main user's profile picture" draggable="false"
+                src=" {{user.get('image_url')}} ">
         </div>
-
+        <!-- a username of the current user -->
+        <div>
+            <p id="username-self">{{ user.get('username') }}</p>
+        </div>
     </div>
-</section>
+    
+    <!-- “Suggestions for you” text -->
+    <div class="suggestions-for-you">Suggestions for you</div>
+
+    <!-- =========================== Suggested Users =========================== -->
+    <!-- 5 suggested accounts -->
+    <div class="suggestions">
+        <!-- ======================= First User Card ======================= -->
+        <div class="user-profile-card">
+            <div class="sug-profile-card">
+                <!-- photo of a suggested account -->
+                <div class="sug-prof-pic">
+                    <img alt="suggested user1's profile picture" draggable="false"
+                        src="{{ suggestions[0].get('image_url')}}">
+                </div>
+                <div class="sug-user-card">
+                    <p>
+                        <!-- username of a suggested account -->
+                        <div class="sug-user-name">{{ suggestions[0].get('username') }}</div>
+                        <!-- “suggested for you” text below the username -->
+                        <div class="suggested-for-you">suggested for you</div>
+                    </p>
+                </div>
+            </div>
+            <!-- link to “follow” the user -->
+            <!-- the “follow” link should be blue but not have an underline -->
+            <a class="follow-action-button" href="#">follow</a>
+        </div>
+        <!-- ======================= Second User Card ======================= -->
+        <div class="user-profile-card">
+            <div class="sug-profile-card">
+                <div class="sug-prof-pic">
+                    <img alt="suggested user2's profile picture" draggable="false"
+                        src="{{ suggestions[1].get('image_url')}}">
+                </div>
+                <div class="sug-user-card">
+                    <p>
+                    <div class="sug-user-name">{{ suggestions[1].get('username') }}</div>
+                    <div class="suggested-for-you">suggested for you</div>
+                    </p>
+                </div>
+            </div>
+            <a class="follow-action-button" href="#">follow</a>
+        </div>
+        <!-- ======================= Third User Card ======================= -->
+        <div class="user-profile-card">
+            <div class="sug-profile-card">
+                <div class="sug-prof-pic">
+                    <img alt="suggested user3's profile picture" draggable="false"
+                        src="{{ suggestions[2].get('image_url')}}">
+                </div>
+                <div class="sug-user-card">
+                    <p>
+                    <div class="sug-user-name">{{ suggestions[2].get('username') }}</div>
+                    <div class="suggested-for-you">suggested for you</div>
+                    </p>
+                </div>
+            </div>
+            <a class="follow-action-button" href="#">follow</a>
+        </div>
+        <!-- ======================= Fourth User Card ======================= -->
+        <div class="user-profile-card">
+            <div class="sug-profile-card">
+                <div class="sug-prof-pic">
+                    <img alt="suggested user4's profile picture" draggable="false"
+                        src="{{ suggestions[3].get('image_url')}}">
+                </div>
+                <div class="sug-user-card">
+                    <p>
+                    <div class="sug-user-name">{{ suggestions[3].get('username') }}</div>
+                    <div class="suggested-for-you">suggested for you</div>
+                    </p>
+                </div>
+            </div>
+            <a class="follow-action-button" href="#">follow</a>
+        </div>
+        <!-- ======================= Fifth User Card ======================= -->
+        <div class="user-profile-card">
+            <div class="sug-profile-card">
+                <div class="sug-prof-pic">
+                    <img alt="suggested user5's profile picture" draggable="false"
+                        src="{{ suggestions[4].get('image_url')}}">
+                </div>
+                <div class="sug-user-card">
+                    <p>
+                    <div class="sug-user-name">{{ suggestions[4].get('username') }}</div>
+                    <div class="suggested-for-you">suggested for you</div>
+                    </p>
+                </div>
+            </div>
+            <a class="follow-action-button" href="#">follow</a>
+        </div>
+    </div>
+</div>
