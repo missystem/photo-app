@@ -1,0 +1,541 @@
+<!-- 
+Photo App: https://github.com/missystem/photo-app
+Description: a high-fidelity prototype of a photo sharing app using HTML & CSS
+    
+Authors:
+    - Yuhan Shi
+    - Tianyi Wu
+
+Credits:
+    - icons: https://fontawesome.com/v5.15/icons?m=free
+    - pictures: https://picsum.photos/
+    - outline ideas: https://dev.to/kunaal438/how-to-make-instagram-clone-using-html-css-fully-responsive-49co
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo App</title>
+    <!-- Google Font - Comfortaa & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/style.css">
+</head>
+
+<body>
+    {% include 'includes/navbar.html' %}
+    <!-- ========================== Navigation Bar(under includes/navbar.html) ========================== -->
+
+    <section id="main">
+        <div class="wrapper">
+            <div class="left-panel">
+                <!-- ======================== Stories Panel ======================== -->
+                {% include 'includes/stories.html' %}
+                <!-- 5 stories -->
+                
+                <!-- ============================ POSTS ============================ -->
+                <!-- a series of cards that display a user’s post and associated comments -->
+                <!-- -------------------------- FIRST POST -------------------------- -->
+                <div id="series-of-post-cards">
+                    <!-- The top of the card should have the creator’s username and an icon with 3 dots -->
+                    <div class="post-top">
+                        <!-- creator’s username -->
+                        <header class="post-creator-username">gibsonjack</header>
+                        <!-- 3 dots -->
+                        <div class="icon">
+                            <div class="post-top-icon"><i class="fas fa-ellipsis-h"></i></div>
+                        </div>
+                    </div>
+                    <!-- The picture displayed below the username -->
+                    <div class="post-pic">
+                        <img alt="creator's picture"
+                            src="https://i.picsum.photos/id/445/4256/2819.jpg?hmac=99qT1IPidZrzaXTgG1ixRRVwElWXUlNepU2k692G44c">
+                    </div>
+                    <div class="post-bottom">
+                        <!-- a row of icons below the picture -->
+                        <section class="row-of-icons">
+                            <!-- heart, comment, and plane on the left -->
+                            <div class="left-icons">
+                                <div class="icon">
+                                    <i class="far fa-heart fa-lg"></i>
+                                </div>
+                                <div class="icon">
+                                    <i class="far fa-comment fa-lg"></i>
+                                </div>
+                                <div class="icon">
+                                    <i class="far fa-paper-plane fa-lg"></i>
+                                </div>
+                            </div>
+                            <!-- bookmark on the right -->
+                            <div class="right-icons">
+                                <div class="icon">
+                                    <i class="far fa-bookmark fa-lg"></i>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- bolded text with the number of likes below the icons -->
+                        <section class="num-of-likes">
+                            <div class="_likes">
+                                <span>30</span> likes
+                            </div>
+                        </section>
+                        <!-- The caption of the photo -->
+                        <div class="caption">
+                            <!-- creator’s username -->
+                            <div class="caption-creator-username">
+                                <span class="cap-creator">gibsonjack</span>
+                                <!-- the text of the caption -->
+                                <span class="cap-text-and-more">
+                                    <span class="cap-text">
+                                        Here is a caption about the photo. Text text text text text text text text text text text text text text text text text text text text text text
+                                    </span>
+                                    <span>
+                                        ...&nbsp;
+                                        <a class="cap-more" href="#">more</a>
+                                        <!-- a “more” link (respectively) below the likes -->
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- 2 comments below the caption -->
+                        <section class="comments">
+                            <!-- the first comments -->
+                            <div class="comment-cards">
+                                <!-- commentor’s username -->
+                                <div class="view-comment">lizzie</div>
+                                <!-- the text of the comment -->
+                                <div class="comment">
+                                    Here is a comment text text text text text text text text.
+                                </div> 
+                            </div>
+                            <!-- the second comments -->
+                            <div class="comment-cards">
+                                <div class="view-comment">vanek97</div>
+                                <div class="comment">
+                                    Here is another comment text text text.
+                                </div>
+                            </div>
+                            
+                            <div class="post-time">
+                                <time class="timing" datetime="2022-04-07T02:01:30.000Z"
+                                    title="Apr 6, 2022">
+                                    1 DAY AGO
+                                </time>
+                            </div>
+                        </section>
+                    </div>
+
+                    <hr class="line-above-comment">
+                    <!-- an “Add a comment section” -->
+                    <section class="post-btm-cmt">
+                        <div class="smiley-cmt-box">
+                            <!-- a smiley face -->
+                            <div class="icon">
+                                <div class="smiley">
+                                    <i class="far fa-smile  fa-lg"></i>
+                                </div>
+                            </div>
+                            <!-- a text input -->
+                            <input type="text" class="comment-box" placeholder="Add a comment...">
+                            
+                        </div>
+                        <!-- a “Post” link -->
+                        <a class="comment-post-button" href="#">Post</a>
+                    </section>
+                </div>
+
+                <!-- -------------------------- SECOND POST -------------------------- -->
+                <div id="series-of-post-cards">
+                    <div class="post-top">
+                        <header class="post-creator-username">lindseychandler</header>
+                        <div class="icon">
+                            <div class="post-top-icon"><i class="fas fa-ellipsis-h"></i></div>
+                        </div>
+                    </div>
+                    <div class="post-pic">
+                        <img alt="creator's picture"
+                            src="https://i.picsum.photos/id/10/2500/1667.jpg?hmac=J04WWC_ebchx3WwzbM-Z4_KC_LeLBWr5LZMaAkWkF68">
+                    </div>
+                    <div class="post-bottom">
+                        <section class="row-of-icons">
+                            <div class="left-icons">
+                                <div class="icon">
+                                    <i class="far fa-heart fa-lg"></i>
+                                </div>
+                                <div class="icon">
+                                    <i class="far fa-comment fa-lg"></i>
+                                </div>
+                                <div class="icon">
+                                    <i class="far fa-paper-plane fa-lg"></i>
+                                </div>
+                            </div>
+                            <div class="right-icons">
+                                <div class="icon">
+                                    <i class="far fa-bookmark fa-lg"></i>
+                                </div>
+                            </div>
+                        </section>
+                
+                        <section class="num-of-likes">
+                            <div class="_likes">
+                                <span>30</span> likes
+                            </div>
+                        </section>
+                
+                        <div class="caption">
+                            <div class="caption-creator-username">
+                                    <span class="cap-creator">lindseychandler</span>
+                                <span class="cap-text-and-more">
+                                    <span class="cap-text">
+                                        Here is a caption about the photo. Text text text text text text text text text text text text
+                                        text text text text text text text text text text
+                                    </span>
+                                    <span>
+                                        ...&nbsp;
+                                        <a class="cap-more" href="#">more</a>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                
+                        <section class="comments">
+                            <div class="comment-cards">
+                                <div class="view-comment">lizzie</div>
+                                <div class="comment">
+                                    Here is a comment text text text text text text text text.
+                                </div>
+                            </div>
+                            <div class="comment-cards">
+                                <div class="view-comment">vanek97</div>
+                                <div class="comment">
+                                    Here is another comment text text text.
+                                </div>
+                            </div>
+                
+                            <div class="post-time">
+                                <time class="timing" datetime="2022-04-07T02:01:30.000Z" title="Apr 6, 2022">
+                                    1 DAY AGO
+                                </time>
+                            </div>
+                        </section>
+                    </div>
+                
+                    <hr class="line-above-comment">
+                    <section class="post-btm-cmt">
+                        <div class="smiley-cmt-box">
+                            <div class="icon">
+                                <div class="smiley">
+                                    <i class="far fa-smile  fa-lg"></i>
+                                </div>
+                            </div>
+                            <input type="text" class="comment-box" placeholder="Add a comment...">
+                        </div>
+                        <a class="comment-post-button" href="#">Post</a>
+                    </section>
+                </div>
+
+                <!-- -------------------------- THIRD POST -------------------------- -->
+                <div id="series-of-post-cards">
+                    <div class="post-top">
+                        <header class="post-creator-username">brandonmiller</header>
+                        <div class="icon">
+                            <div class="post-top-icon"><i class="fas fa-ellipsis-h"></i></div>
+                        </div>
+                    </div>
+                    <div class="post-pic">
+                        <img alt="creator's picture"
+                            src="https://i.picsum.photos/id/274/3824/2520.jpg?hmac=OOl_w8LX_psogyruUe1z986AuqeS_TY7rLxAFgG4wrc">
+                    </div>
+                    <div class="post-bottom">
+                        <section class="row-of-icons">
+                            <div class="left-icons">
+                                <div class="icon">
+                                    <i class="far fa-heart fa-lg"></i>
+                                </div>
+                                <div class="icon">
+                                    <i class="far fa-comment fa-lg"></i>
+                                </div>
+                                <div class="icon">
+                                    <i class="far fa-paper-plane fa-lg"></i>
+                                </div>
+                
+                            </div>
+                            <div class="right-icons">
+                                <div class="icon">
+                                    <i class="far fa-bookmark fa-lg"></i>
+                                </div>
+                            </div>
+                        </section>
+                
+                        <section class="num-of-likes">
+                            <div class="_likes">
+                                <span>30</span> likes
+                            </div>
+                        </section>
+                
+                        <div class="caption">
+                            <div class="caption-creator-username">
+                                    <span class="cap-creator">brandonmiller</span>
+                                <span class="cap-text-and-more">
+                                    <span class="cap-text">
+                                        Here is a caption about the photo. Text text text text text text text text text text text text
+                                        text text text text text text text text text text
+                                    </span>
+                                    <span>
+                                        ...&nbsp;
+                                        <a class="cap-more" href="#">more</a>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                
+                        <section class="comments">
+                            <div class="comment-cards">
+                                <div class="view-comment">lizzie</div>
+                                <div class="comment">
+                                    Here is a comment text text text text text text text text.
+                                </div>
+                            </div>
+                            <div class="comment-cards">
+                                <div class="view-comment">vanek97</div>
+                                <div class="comment">
+                                    Here is another comment text text text.
+                                </div>
+                            </div>
+                
+                            <div class="post-time">
+                                <time class="timing" datetime="2022-04-07T02:01:30.000Z" title="Apr 6, 2022">
+                                    1 DAY AGO
+                                </time>
+                            </div>
+                        </section>
+                
+                
+                    </div>
+                
+                    <hr class="line-above-comment">
+                    <section class="post-btm-cmt">
+                        <div class="smiley-cmt-box">
+                            <div class="icon">
+                                <div class="smiley">
+                                    <i class="far fa-smile  fa-lg"></i>
+                                </div>
+                
+                            </div>
+                            <input type="text" class="comment-box" placeholder="Add a comment...">
+                        </div>
+                        <a class="comment-post-button" href="#">Post</a>
+                    </section>
+                </div>
+
+                <!-- -------------------------- FOURTH POST -------------------------- -->
+                <div id="series-of-post-cards">
+                    <div class="post-top">
+                        <header class="post-creator-username">debramcdaniel</header>
+                        <div class="icon">
+                            <div class="post-top-icon"><i class="fas fa-ellipsis-h"></i></div>
+                        </div>
+                    </div>
+                    <div class="post-pic">
+                        <img alt="creator's picture"
+                            src="https://i.picsum.photos/id/193/3578/2451.jpg?hmac=M5yoazhwdwMa_27rC5-S50SNFvCy4Kni0wXoa6iVF0g">
+                    </div>
+                    <div class="post-bottom">
+                        <section class="row-of-icons">
+                            <div class="left-icons">
+                                <div class="icon">
+                                    <i class="far fa-heart fa-lg"></i>
+                                </div>
+                                <div class="icon">
+                                    <i class="far fa-comment fa-lg"></i>
+                                </div>
+                                <div class="icon">
+                                    <i class="far fa-paper-plane fa-lg"></i>
+                                </div>
+                
+                            </div>
+                            <div class="right-icons">
+                                <div class="icon">
+                                    <i class="far fa-bookmark fa-lg"></i>
+                                </div>
+                            </div>
+                        </section>
+                
+                        <section class="num-of-likes">
+                            <div class="_likes">
+                                <span>30</span> likes
+                            </div>
+                        </section>
+                
+                        <div class="caption">
+                            <div class="caption-creator-username">
+                                    <span class="cap-creator">debramcdaniel</span>
+                                <span class="cap-text-and-more">
+                                    <span class="cap-text">
+                                        Here is a caption about the photo. Text text text text text text text text text text text text
+                                        text text text text text text text text text text
+                                    </span>
+                                    <span>
+                                        ...&nbsp;
+                                        <a class="cap-more" href="#">more</a>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                
+                        <section class="comments">
+                            <div class="comment-cards">
+                                <div class="view-comment">lizzie</div>
+                                <div class="comment">
+                                    Here is a comment text text text text text text text text.
+                                </div> 
+                            </div>
+                            <div class="comment-cards">
+                                <div class="view-comment">vanek97</div>
+                                <div class="comment">
+                                    Here is another comment text text text.
+                                </div>
+                            </div>
+                
+                            <div class="post-time">
+                                <time class="timing" datetime="2022-04-07T02:01:30.000Z" title="Apr 6, 2022">
+                                    1 DAY AGO
+                                </time>
+                            </div>
+                        </section>
+                    </div>
+                
+                    <hr class="line-above-comment">
+                    <section class="post-btm-cmt">
+                        <div class="smiley-cmt-box">
+                            <div class="icon">
+                                <div class="smiley">
+                                    <i class="far fa-smile  fa-lg"></i>
+                                </div>
+                            </div>
+                            <input type="text" class="comment-box" placeholder="Add a comment...">
+                
+                        </div>
+                        <a class="comment-post-button" href="#">Post</a>
+                    </section>
+                </div>
+
+                <!-- -------------------------- FIFTH POST -------------------------- -->
+                <div id="series-of-post-cards">
+                    <div class="post-top">
+                        <header class="post-creator-username">sharpmargaret</header>
+                        <div class="icon">
+                            <div class="post-top-icon"><i class="fas fa-ellipsis-h"></i></div>
+                        </div>
+                    </div>
+                    <div class="post-pic">
+                        <img alt="creator's picture"
+                            src="https://i.picsum.photos/id/171/2048/1536.jpg?hmac=16eVtfmqTAEcr8VwTREQX4kV8dzZKcGWI5ouMlhRBuk">
+                    </div>
+                    <div class="post-bottom">
+                        <section class="row-of-icons">
+                            <div class="left-icons">
+                                <div class="icon">
+                                    <i class="far fa-heart fa-lg"></i>
+                                </div>
+                                <div class="icon">
+                                    <i class="far fa-comment fa-lg"></i>
+                                </div>
+                                <div class="icon">
+                                    <i class="far fa-paper-plane fa-lg"></i>
+                                </div>
+                
+                            </div>
+                            <div class="right-icons">
+                                <div class="icon">
+                                    <i class="far fa-bookmark fa-lg"></i>
+                                </div>
+                            </div>
+                        </section>
+                
+                        <section class="num-of-likes">
+                            <div class="_likes">
+                                <span>30</span> likes
+                            </div>
+                        </section>
+                
+                        <div class="caption">
+                            <div class="caption-creator-username">
+                                    <span class="cap-creator">sharpmargaret</span>
+                                <span class="cap-text-and-more">
+                                    <span class="cap-text">
+                                        Here is a caption about the photo. Text text text text text text text text text text text text
+                                        text text text text text text text text text text
+                                    </span>
+                                    <span>
+                                        ...&nbsp;
+                                        <a class="cap-more" href="#">more</a>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                
+                        <section class="comments">
+                            <div class="comment-cards">
+                                <div class="view-comment">lizzie</div>
+                                <div class="comment">
+                                    Here is a comment text text text text text text text text.
+                                </div>
+                            </div>
+                            <div class="comment-cards">
+                                <div class="view-comment">vanek97</div>
+                                <div class="comment">
+                                    Here is another comment text text text.
+                                </div>
+                            </div>
+                
+                            <div class="post-time">
+                                <time class="timing" datetime="2022-04-07T02:01:30.000Z" title="Apr 6, 2022">
+                                    1 DAY AGO
+                                </time>
+                            </div>
+                        </section>
+                    </div>
+                
+                    <hr class="line-above-comment">
+                    <section class="post-btm-cmt">
+                        <div class="smiley-cmt-box">
+                            <div class="icon">
+                                <div class="smiley">
+                                    <i class="far fa-smile  fa-lg"></i>
+                                </div>
+                
+                            </div>
+                
+                            <input type="text" class="comment-box" placeholder="Add a comment...">
+                
+                        </div>
+                        <a class="comment-post-button" href="#">Post</a>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- =========================== Recommendation Panel =========================== -->
+    {% include 'includes/suggestions.html' %}
+</body>
+<html>
+
+<!-- 
+In a comment at the end of your HTML file, describe how you would add a feature so users can easily add alt-text to their images
+Hint: a way to do so exists but is difficult to find
+Ans:    
+    During posting section, they can have a place to write texts so that text-alt can be done.
+    When you're trying to post the content, there could be advanced settings for them to choose before
+    actually sending out.
+    Under the advanced setting, there should be a choice of "write alt text".
+    This allows users to wrtie alt text as they want and could save their work after with the button "save".
+    Finally, the alt text will be indicated on the post review, once approved by user, it can be published.
+    Therefore, alt text function is being realized as the above description.
+-->
