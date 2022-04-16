@@ -58,7 +58,7 @@ body {
     margin-right: 5px;
 }
 
-.gibsonjack {
+.mainuser {
     margin-right: 15px;
 }
 
@@ -455,7 +455,6 @@ a:visited {
     padding: 5px;
     display: flex;
     flex-direction: column;
-  
 }
 
 #profile-card-self {
