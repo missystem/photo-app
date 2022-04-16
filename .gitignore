@@ -6,9 +6,12 @@ bin-release/
 
 # Other files and folders
 .settings/
-__pycache__/
+__pycache__/app.cpython-37.pyc
 env/
-
+env/lib/
+env/pyvenv.cfg
+__pycache__/app.cpython-39.pyc
+__pycache__/fake_data.cpython-39.pyc
 # Executables
 *.swf
 *.air
@@ -18,3 +21,5 @@ env/
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important
 # information for Eclipse / Flash Builder.
+__pycache__/app.cpython-37.pyc
+env/lib/python3.7/site-packages/jinja2/__pycache__/debug.cpython-37.pyc
