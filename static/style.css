@@ -52,7 +52,7 @@ body {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-end;
-    width: 200px;
+    width: 300px;
     font-size: 15px;
     position: relative;
     margin-right: 5px;
@@ -175,7 +175,7 @@ a:visited {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 0 10px;
+    margin: 0 12px;
     margin-top: 10px;
     /* margin-right: 5px; */
     /* padding: 0px; */
@@ -190,7 +190,7 @@ a:visited {
     overflow: hidden;
     justify-content: center;
     align-items: center;
-    margin-left: 6px;
+    /* margin-left: 6px; */
     /* padding: 2px; */
     background: linear-gradient(45deg, rgb(220, 220, 220), rgb(220, 220, 220) 100%);
     /* background: linear-gradient(45deg, rgb(255, 230, 0), rgb(255, 0, 128) 80%); */
@@ -209,7 +209,8 @@ a:visited {
   /* border: 1px solid rgb(0, 0, 0); */
     width: 100%;
     
-    /* overflow: hidden; */
+    overflow: hidden;
+    text-overflow: ellipsis;
     text-align: center;
     font-size: 12px;
     margin-top: 5px;
@@ -351,6 +352,8 @@ a:visited {
   /* border: 1px solid rgb(0, 0, 0); */
   padding: 2px;
   margin: 3px;
+  /* overflow: hidden; */
+
 }
 .cap-more {
   /* border: 1px solid rgb(0, 0, 0); */
