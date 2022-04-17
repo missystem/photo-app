@@ -4,56 +4,15 @@ usernames (outlined in pink) are replaced by data stored in the
 stories context variable. You will need to use a loop.
 -->
 <div id="stories">
-    <!-- ---------------- the first story ---------------- -->
-    <div class="status-card">
-        <!-- a circular profile pic on top -->
-        <div class="profile-pic">
-            <img alt="user1's profile picture" draggable="false"
-                src="{{ stories[0].get('user')['image_url'] }}">
+    {% for story in stories %}
+        <div class="status-card">
+            <!-- a circular profile pic on top -->
+            <div class="profile-pic">
+                <img alt="user1's profile picture" draggable="false"
+                    src="{{ story.get('user')['image_url'] }}">
+            </div>
+            <!-- a username underneath -->
+            <p class="username" href="#">{{ story.get('user')['username'] }}</p>
         </div>
-        <!-- a username underneath -->
-        <p class="username" href="#">{{ stories[0].get('user')['username'] }}</p>
-    </div>
-    <!-- ---------------- the second story ---------------- -->
-    <div class="status-card">
-        <div class="profile-pic">
-            <img alt="user2's profile picture" draggable="false"
-                src="{{ stories[1].get('user')['image_url'] }}">
-        </div>
-        <p class="username" href="#">{{ stories[1].get('user')['username'] }}</p>
-    </div>
-    <!-- ---------------- the third story ---------------- -->
-    <div class="status-card">
-        <div class="profile-pic">
-            <img alt="user3's profile picture" draggable="false"
-                src="{{ stories[2].get('user')['image_url'] }}">
-        </div>
-        <p class="username" href="#">{{ stories[2].get('user')['username'] }}</p>
-    </div>
-    <!-- ---------------- the fourth story ---------------- -->
-    <div class="status-card">
-        <div class="profile-pic">
-            <img alt="user4's profile picture" draggable="false"
-                src="{{ stories[3].get('user')['image_url'] }}">
-        </div>
-        <p class="username" href="#">{{ stories[3].get('user')['username'] }}</p>
-    </div>
-    <!-- ---------------- the fifth story ---------------- -->
-    <div class="status-card">
-        <div class="profile-pic">
-            <img alt="user5's profile picture" draggable="false"
-                src="{{ stories[4].get('user')['image_url'] }}">
-        </div>
-        <p class="username" href="#">{{ stories[4].get('user')['username'] }}</p>
-    </div>
-    <!-- ---------------- the sixth story ---------------- -->
-    <!--
-    <div class="status-card">
-        <div class="profile-pic">
-            <img alt="user5's profile picture" draggable="false"
-                src="{{ stories[5].get('user')['image_url'] }}">
-        </div>
-        <p class="username" href="#">{{ stories[5].get('user')['username'] }}</p>
-    </div>
-    -->
+    {% endfor %}
 </div>
