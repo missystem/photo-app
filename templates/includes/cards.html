@@ -84,24 +84,26 @@ When outputting the comments:
                 Display only the first comment below the button
             Otherwise, just display the single comment below the title of the post (no view all button)
             -->
-            
-            <!-- the first comments -->
-            <div class="comment-cards">
-                <!-- commentor’s username -->
-                <div class="view-comment">{{ posts[0].get('comments')[0]['user'].get('username') }}</div>
-                <!-- the text of the comment -->
-                <div class="comment">{{ posts[0].get('comments')[0]['text'] }}</div> 
-            </div>
-            <!-- the second comments -->
-            <div class="comment-cards">
-                <div class="view-comment">{{ posts[1].get('comments')[0]['user'].get('username') }}</div>
-                <div class="comment">{{ posts[1].get('comments')[0]['text'] }}</div>
-            </div>
-            
+            <!-- If more than 0 comment -->
+            {% if posts[0].get('comments')|length > 0 %}
+                <!-- If there is more than one comment associated with the post: -->
+                {% if posts[0].get('comments')|length > 1 %}
+                    <!-- Display a “view all comments” button -->
+                    <a class="show-more-comments" href="#">View all {{posts[0].get('comments')|length}} comments</a>
+                {% endif %}
+                <!-- Display only the first comment below the button -->
+                <!-- Otherwise, just display the single comment below the title of the post (no view all button) -->
+                <div class="comment-cards">
+                    <!-- commentor’s username -->
+                    <div class="view-comment">{{ posts[0].get('comments')[0]['user'].get('username') }}</div>
+                    <!-- the text of the comment -->
+                    <div class="comment">{{ posts[0].get('comments')[0]['text'] }}</div> 
+                </div>
+            {% endif %}
+            <!-- Post time under comments -->
             <div class="post-time">
-                <time class="timing" datetime="2022-04-07T02:01:30.000Z"
-                    title="Apr 6, 2022">
-                    1 DAY AGO
+                <time class="timing" datetime="posts[0].get('time_posted')">
+                    {{posts[0].get('display_time')}}
                 </time>
             </div>
         </section>
