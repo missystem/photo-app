@@ -9,6 +9,7 @@ bin-release/
 __pycache__/
 env/
 env/lib/
+__pycache__/app.cpython-37.pyc
 
 # Executables
 *.swf
@@ -19,5 +20,4 @@ env/lib/
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important
 # information for Eclipse / Flash Builder.
-__pycache__/app.cpython-37.pyc
 env/lib/python3.7/site-packages/jinja2/__pycache__/debug.cpython-37.pyc
