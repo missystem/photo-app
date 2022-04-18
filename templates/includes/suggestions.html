@@ -11,7 +11,7 @@ by data stored in the suggestions and user context variables. This includes:
     <!-- A circular profile pic of the current user -->
     <div id="profile-card-self">
         <div id="profile-pic-self">
-            <img alt="main user's profile picture" draggable="false"
+            <img alt="{{ user.get('username') }}'s profile picture" draggable="false"
                 src=" {{user.get('image_url')}} ">
         </div>
         <!-- a username of the current user -->
@@ -32,7 +32,7 @@ by data stored in the suggestions and user context variables. This includes:
                 <div class="sug-profile-card">
                     <!-- photo of a suggested account -->
                     <div class="sug-prof-pic">
-                        <img alt="suggested user1's profile picture" draggable="false"
+                        <img alt="{{ suggestion.get('username') }}'s profile picture" draggable="false"
                             src="{{ suggestion.get('image_url')}}">
                     </div>
                     <div class="sug-user-card">
