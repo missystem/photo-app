@@ -8,7 +8,7 @@ stories context variable. You will need to use a loop.
         <div class="status-card">
             <!-- a circular profile pic on top -->
             <div class="profile-pic">
-                <img alt="user1's profile picture" draggable="false"
+                <img alt="{{ story.get('title') }}" draggable="false"
                     src="{{ story.get('user')['image_url'] }}">
             </div>
             <!-- a username underneath -->
