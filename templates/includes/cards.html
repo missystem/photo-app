@@ -26,8 +26,7 @@ When outputting the comments:
         </div>
         <!-- The picture displayed below the username -->
         <div class="post-pic">
-            <img alt="creator's picture"
-                src="{{ post.get('image_url') }}">
+            <img alt="{{ post.get('user')['username'] }}'s picture" src="{{ post.get('image_url') }}">
         </div>
         <div class="post-bottom">
             <!-- a row of icons below the picture -->
