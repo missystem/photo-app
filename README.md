@@ -35,6 +35,8 @@ See Lab 2 (https://cs396-web-dev.github.io/spring2022/assignments/lab02) for ins
 </body>
 ```
 
+--- 
+
 ## HW 2
 
 ### Organize files
