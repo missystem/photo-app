@@ -88,7 +88,7 @@ When outputting the comments:
                     <!-- If there is more than one comment associated with the post: -->
                     {% if post.get('comments')|length > 1 %}
                         <!-- Display a “view all comments” button -->
-                        <a class="show-more-comments" href="#">View all {{post.get('comments')|length}} comments</a>
+                        <a class="show-more-comments" href="#">View all {{ post.get('comments')|length }} comments</a>
                     {% endif %}
                     <!-- Display only the first comment below the button -->
                     <!-- Otherwise, just display the single comment below the title of the post (no view all button) -->
