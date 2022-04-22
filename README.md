@@ -9,9 +9,9 @@ See Lab 2 (<https://cs396-web-dev.github.io/spring2022/assignments/lab02>) for i
 
 ## Instructions
 
-* [HW 1](#HW 1 Instruction)
-* [HW 2]()
-* [HW 3]()
+* [HW 1](#HW-1-Instruction)
+* [HW 2](#HW-2-Instruction)
+* [HW 3](#HW-3-Instruction)
 
 ---
 
