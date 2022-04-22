@@ -102,6 +102,12 @@ photo-app
 
 ## [HW 3 Instruction](https://cs396-web-dev.github.io/spring2022/assignments/hw03)
 
+### Questions:
+1. Cannot connect GitHub with Heroku?  
+[How to switch deployment method from GitHub to Heroku Git with all the changes/app code available in a GitHub repo](https://help.heroku.com/CKVOUPSY/how-to-switch-deployment-method-from-github-to-heroku-git-with-all-the-changes-app-code-available-in-a-github-repo)</br>
+2. How to create a hosted database?
+3. How to deploy? (Heroku)
+
 #### [Navigation](#Navigation)
 
 
