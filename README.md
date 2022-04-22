@@ -7,8 +7,7 @@ See Lab 2 (<https://cs396-web-dev.github.io/spring2022/assignments/lab02>) for i
 3. set up the Flask environment variables, and
 4. run your Flask app
 
-## Instructions
-
+## Navigation
 * [HW 1](#HW-1-Instruction)
 * [HW 2](#HW-2-Instruction)
 * [HW 3](#HW-3-Instruction)
@@ -35,6 +34,8 @@ See Lab 2 (<https://cs396-web-dev.github.io/spring2022/assignments/lab02>) for i
     </section>
 </body>
 ```
+
+#### [Navigation](#Navigation)
 
 ---
 
@@ -95,6 +96,15 @@ photo-app
     └── starter_template.html
 ```
 
+#### [Navigation](#Navigation)
+
 ---
 
 ## [HW 3 Instruction](https://cs396-web-dev.github.io/spring2022/assignments/hw03)
+
+#### [Navigation](#Navigation)
+
+
+--- 
+
+
