@@ -3,8 +3,10 @@ from . import db
 from .utils import get_display_time
 
 class Post(db.Model):
+    # name of table I want to connect to:
     __tablename__ = 'posts'
 
+    # reference to the columns with which I want the spplication to interact
     id = db.Column(db.Integer, primary_key=True)
     image_url = db.Column(db.String(200), nullable=False)
     caption = db.Column(db.Text, nullable=True)
