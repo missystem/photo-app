@@ -14,15 +14,37 @@ class PostListEndpoint(Resource):
         self.current_user = current_user
 
     def get(self):
-        # get posts created by one of these users:
+        # TODO: get posts created by one of these users:
         # print(get_authorized_user_ids(self.current_user))
-        return Response(json.dumps([]), mimetype="application/json", status=200)
+        # create empty list for current user contents
+        posts_json = []
+        posts = Post.query.all()
+        # Loop through posts
+        for post in posts:
+            # pre-process the data
+            # --> the if statment has some problems
+            if post.user.id == self.current_user.id:
+                posts_json.append(post.to_dict())
+        
+        # return what you want
+        return Response(json.dumps(posts_json), mimetype="application/json", status=200)
 
     def post(self):
-        # create a new post based on the data posted in the body 
+        # TODO: create a new post based on the data posted in the body 
         body = request.get_json()
-        print(body)  
-        return Response(json.dumps({}), mimetype="application/json", status=201)
+        # print(body)
+        
+        new_post = Post (
+            image_url=body.get('image_url'),
+            user_id=self.current_user.id,
+            caption=body.get('caption'),
+            alt_text=body.get('alt_text')
+        )
+        # add to database
+        db.session.add(new_post)
+        db.session.commit()
+        
+        return Response(json.dumps(new_post.to_dict()), mimetype="application/json", status=201)
         
 class PostDetailEndpoint(Resource):
 
@@ -31,20 +53,32 @@ class PostDetailEndpoint(Resource):
         
 
     def patch(self, id):
-        # update post based on the data posted in the body 
+        # TODO: update post based on the data posted in the body
         body = request.get_json()
-        print(body)       
-        return Response(json.dumps({}), mimetype="application/json", status=200)
+        print(body)
+        post = Post.query.get(id)
+        post.image_url=body.get('image_url'),
+        post.user_id = self.current_user.id,
+        post.caption = body.get('caption'),
+        post.alt_text = body.get('alt_text')
+        
+        db.session.commit()
+        return Response(json.dumps(post.to_dict()), mimetype="application/json", status=200)
 
 
     def delete(self, id):
-        # delete post where "id"=id
-        return Response(json.dumps({}), mimetype="application/json", status=200)
+        # TODO: delete post where "id"=id
+        Post.query.filter_by(id=id).delete()
+        # db.session.commit()
+        delete_post = Post.query.get(id)
+        return Response(json.dumps(delete_post.to_dict()), mimetype="application/json", status=200)
+        # return Response(json.dumps({}), mimetype="application/json", status=200)
 
 
     def get(self, id):
-        # get the post based on the id
-        return Response(json.dumps({}), mimetype="application/json", status=200)
+        # TODO: get the post based on the id
+        post = Post.query.get(id)
+        return Response(json.dumps(post.to_dict()), mimetype="application/json", status=200)
 
 def initialize_routes(api):
     api.add_resource(
