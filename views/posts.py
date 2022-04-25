@@ -56,8 +56,11 @@ class PostDetailEndpoint(Resource):
 
     def patch(self, id):
         # TODO: update post based on the data posted in the body
+        if Post.query.get(id) is None:
+            return Response(json.dumps({}), mimetype="application/json", status=404)
+
         body = request.get_json()
-        print(body)
+        # print(body)
         post = Post.query.get(id)
         # post.image_url=body.get('image_url')
         post.image_url = body['image_url']
@@ -73,19 +76,43 @@ class PostDetailEndpoint(Resource):
 
     def delete(self, id):
         # TODO: delete post where "id"=id
-        if Post.query.filter_by(id=id) != 404:
-            Post.query.filter_by(id=id).delete()
-            # db.session.commit()
-            delete_post = Post.query.get(id)
-            return Response(json.dumps(delete_post.to_dict()), mimetype="application/json", status=200)
+        
+        # if Post.query.filter_by(id=id) == 404 or Post.query.filter_by(id=id) is None:
+        #     return Response(json.dumps({}), mimetype="application/json", status=404)
+        if Post.query.get(id) is None:
+            return Response(json.dumps({}), mimetype="application/json", status=404)
+        Post.query.filter_by(id=id).delete()
+        db.session.commit()
+        delete_post = Post.query.get(id)
         return Response(json.dumps({}), mimetype="application/json", status=200)
+        
+        # if id is None:
+        #     return Response(json.dumps({}), mimetype="application/json", status=404)
+
+        # Post.query.filter_by(id=id).delete()
+        # # db.session.commit()
+        # delete_post = Post.query.get(id)
+        # return Response(json.dumps(delete_post.to_dict()), mimetype="application/json", status=200)
+
+        # return Response(json.dumps({}), mimetype="application/json", status=200)
 
 
     def get(self, id):
         # TODO: get the post based on the id
+        # if id not in get_authorized_user_ids(self.current_user):
+        #     return Response(json.dumps({}), mimetype="application/json", status=404)
         post = Post.query.get(id)
+        if post is None:
+            return Response(json.dumps({}), mimetype="application/json", status=404)
         return Response(json.dumps(post.to_dict()), mimetype="application/json", status=200)
-
+        
+        # unauthorized 404
+        # for aur_id in get_authorized_user_ids(self.current_user):
+        #     if id == aur_id:
+        #         if Post.query.get(id) is not None:
+        #             return Response(json.dumps(Post.query.get(id).to_dict()), mimetype="application/json", status=200)
+        # return Response(json.dumps({}), mimetype="application/json", status=404)
+        
 def initialize_routes(api):
     api.add_resource(
         PostListEndpoint, 
