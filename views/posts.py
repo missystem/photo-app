@@ -24,7 +24,6 @@ class PostListEndpoint(Resource):
         #   - oneself
         #   - ppl #12 are following
         
-        # print(args)
         # limit = args.get('limit') or 10    # 10 is the default
 
         if not args.get('limit'):
@@ -56,6 +55,20 @@ class PostListEndpoint(Resource):
             caption=body.get('caption'),
             alt_text=body.get('alt_text')
         )
+        
+        # if body.get('image_url'):
+        #     image_url = body.get('image_url')
+        # if body.get('caption'):
+        #     caption = body.get('caption')
+        # if body.get('alt_text'):
+        #     alt_text = body.get('alt_text')
+        # user_id = self.current_user.id
+        # new_post = Post (
+        #     image_url,
+        #     user_id,
+        #     caption,
+        #     alt_text
+        # )
         # add to database
         db.session.add(new_post)
         db.session.commit()
@@ -71,25 +84,14 @@ class PostDetailEndpoint(Resource):
     def patch(self, id):
         # TODO: UPDATE post based on the data posted in the body
         body = request.get_json()
-        
-        # user_ids = get_authorized_user_ids(self.current_user)
-        # posts = Post.query.filter(Post.user_id.in_(user_ids)).all()
-        # for post in posts:
-        #     if post.id == id:
-        #         post.image_url = body.get('image_url')
-        #         post.user_id = self.current_user.id
-        #         post.caption = body.get('caption')
-        #         post.alt_text = body.get('alt_text')
-        #         db.session.commit()
-        #         return Response(json.dumps(post.to_dict()), mimetype="application/json", status=200)
-        # return Response(json.dumps({}), mimetype="application/json", status=404)
-
         if can_view_post(id, self.current_user):
             post = Post.query.get(id)
-            post.image_url = body.get('image_url')
-            post.user_id = self.current_user.id
-            post.caption = body.get('caption')
-            post.alt_text = body.get('alt_text')
+            if body.get('image_url'):
+                post.image_url = body.get('image_url')
+            if body.get('caption'):
+                post.caption = body.get('caption')
+            if body.get('alt_text'):
+                post.alt_text = body.get('alt_text')
             db.session.commit()
             return Response(json.dumps(post.to_dict()), mimetype="application/json", status=200)
         return Response(json.dumps({}), mimetype="application/json", status=404)
