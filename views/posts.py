@@ -56,19 +56,6 @@ class PostListEndpoint(Resource):
             alt_text=body.get('alt_text')
         )
         
-        # if body.get('image_url'):
-        #     image_url = body.get('image_url')
-        # if body.get('caption'):
-        #     caption = body.get('caption')
-        # if body.get('alt_text'):
-        #     alt_text = body.get('alt_text')
-        # user_id = self.current_user.id
-        # new_post = Post (
-        #     image_url,
-        #     user_id,
-        #     caption,
-        #     alt_text
-        # )
         # add to database
         db.session.add(new_post)
         db.session.commit()
