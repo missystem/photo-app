@@ -17,7 +17,8 @@ class PostListEndpoint(Resource):
         # TODO: get posts created by one of these users:
         # print(get_authorized_user_ids(self.current_user))
         # create empty list for current user contents
-        posts = Post.query.all()
+        default_limit = 20
+        posts = Post.query.limit(default_limit).all()
         posts_json = []
         # Loop through posts
         for post in posts:
@@ -58,10 +59,13 @@ class PostDetailEndpoint(Resource):
         body = request.get_json()
         print(body)
         post = Post.query.get(id)
-        post.image_url=body.get('image_url'),
-        post.user_id = self.current_user.id,
-        post.caption = body.get('caption'),
-        post.alt_text = body.get('alt_text')
+        # post.image_url=body.get('image_url')
+        post.image_url = body['image_url']
+        post.user_id = self.current_user.id
+        # post.caption = body.get('caption')
+        post.caption = body['caption']
+        # post.alt_text = body.get('alt_text')
+        post.alt_text = body['alt_text']
         
         db.session.commit()
         return Response(json.dumps(post.to_dict()), mimetype="application/json", status=200)
@@ -69,11 +73,12 @@ class PostDetailEndpoint(Resource):
 
     def delete(self, id):
         # TODO: delete post where "id"=id
-        Post.query.filter_by(id=id).delete()
-        # db.session.commit()
-        delete_post = Post.query.get(id)
-        return Response(json.dumps(delete_post.to_dict()), mimetype="application/json", status=200)
-        # return Response(json.dumps({}), mimetype="application/json", status=200)
+        if Post.query.filter_by(id=id) != 404:
+            Post.query.filter_by(id=id).delete()
+            # db.session.commit()
+            delete_post = Post.query.get(id)
+            return Response(json.dumps(delete_post.to_dict()), mimetype="application/json", status=200)
+        return Response(json.dumps({}), mimetype="application/json", status=200)
 
 
     def get(self, id):
