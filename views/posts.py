@@ -17,14 +17,15 @@ class PostListEndpoint(Resource):
         # TODO: get posts created by one of these users:
         # print(get_authorized_user_ids(self.current_user))
         # create empty list for current user contents
-        posts_json = []
         posts = Post.query.all()
+        posts_json = []
         # Loop through posts
         for post in posts:
             # pre-process the data
             # --> the if statment has some problems
-            if post.user.id == self.current_user.id:
-                posts_json.append(post.to_dict())
+            for aui_curr_user in get_authorized_user_ids(self.current_user):
+                if post.user.id == aui_curr_user:
+                    posts_json.append(post.to_dict())
         
         # return what you want
         return Response(json.dumps(posts_json), mimetype="application/json", status=200)
