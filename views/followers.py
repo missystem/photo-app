@@ -15,7 +15,14 @@ class FollowerListEndpoint(Resource):
         People who are following the current user.
         In other words, select user_id where following_id = current_user.id
         '''
-        return Response(json.dumps([]), mimetype="application/json", status=200)
+        followers = Following.query.all()
+        follower_list = []
+        for follower in followers:
+            if follower.id == self.current_user.id:
+                follower_list.append(follower.id)
+        return Response(json.dumps(follower_list), mimetype="application/json", status=200)
+
+        # return Response(json.dumps([]), mimetype="application/json", status=200)
 
 
 def initialize_routes(api):
