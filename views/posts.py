@@ -23,9 +23,22 @@ class PostListEndpoint(Resource):
         # Goal: limit to only user#12 (current_user)'s network
         #   - oneself
         #   - ppl #12 are following
+        
+        # print(args)
+        # limit = args.get('limit') or 10    # 10 is the default
+
+        if not args.get('limit'):
+            limit = 10
+        else:
+            try:
+                limit = int(args.get('limit'))
+                if limit > 50 or limit < 1:
+                    return Response(json.dumps({}), mimetype="application/json", status=400)
+            except:
+                return Response(json.dumps({}), mimetype="application/json", status=400)
+        
         #1. Query the following table to get the user_ids that #12 is following
         user_ids = get_authorized_user_ids(self.current_user)
-        limit = args.get('limit') or 10     # 10 is the default
         posts = Post.query.filter(Post.user_id.in_(user_ids)).limit(limit).all()
         
         posts_json = [post.to_dict() for post in posts]
@@ -34,7 +47,9 @@ class PostListEndpoint(Resource):
         
     def post(self): # HTTP POST
         # TODO: CREATE a new post based on the data posted in the body 
-        body = request.get_json()        
+        body = request.get_json()
+        if len(body) == 0:
+            return Response(json.dumps({}), mimetype="application/json", status=400)
         new_post = Post (
             image_url=body.get('image_url'),
             user_id=self.current_user.id,
