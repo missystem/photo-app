@@ -18,8 +18,8 @@ class FollowerListEndpoint(Resource):
         followers = Following.query.all()
         follower_list = []
         for follower in followers:
-            if follower.id == self.current_user.id:
-                follower_list.append(follower.id)
+            if follower.following_id == self.current_user.id:
+                follower_list.append(follower.user_id)
         return Response(json.dumps(follower_list), mimetype="application/json", status=200)
 
         # return Response(json.dumps([]), mimetype="application/json", status=200)
