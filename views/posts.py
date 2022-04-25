@@ -1,7 +1,9 @@
+from ast import arg
+from collections import UserDict
 from flask import Response, request
 from flask_restful import Resource
-from models import Post, db
-from views import get_authorized_user_ids
+from models import Post, db, Following
+from views import get_authorized_user_ids, can_view_post
 
 import json
 
@@ -13,29 +15,26 @@ class PostListEndpoint(Resource):
     def __init__(self, current_user):
         self.current_user = current_user
 
-    def get(self):
-        # TODO: get posts created by one of these users:
+    def get(self):  # HTTP GET
+        # TODO: GET posts created by one of these users:
         # print(get_authorized_user_ids(self.current_user))
-        # create empty list for current user contents
-        default_limit = 20
-        posts = Post.query.limit(default_limit).all()
-        posts_json = []
-        # Loop through posts
-        for post in posts:
-            # pre-process the data
-            # --> the if statment has some problems
-            for aui_curr_user in get_authorized_user_ids(self.current_user):
-                if post.user.id == aui_curr_user:
-                    posts_json.append(post.to_dict())
+        # get limit number of posts
+        args = request.args
+        # Goal: limit to only user#12 (current_user)'s network
+        #   - oneself
+        #   - ppl #12 are following
+        #1. Query the following table to get the user_ids that #12 is following
+        user_ids = get_authorized_user_ids(self.current_user)
+        limit = args.get('limit') or 10     # 10 is the default
+        posts = Post.query.filter(Post.user_id.in_(user_ids)).limit(limit).all()
         
-        # return what you want
+        posts_json = [post.to_dict() for post in posts]
         return Response(json.dumps(posts_json), mimetype="application/json", status=200)
 
-    def post(self):
-        # TODO: create a new post based on the data posted in the body 
-        body = request.get_json()
-        # print(body)
         
+    def post(self): # HTTP POST
+        # TODO: CREATE a new post based on the data posted in the body 
+        body = request.get_json()        
         new_post = Post (
             image_url=body.get('image_url'),
             user_id=self.current_user.id,
@@ -45,8 +44,8 @@ class PostListEndpoint(Resource):
         # add to database
         db.session.add(new_post)
         db.session.commit()
-        
         return Response(json.dumps(new_post.to_dict()), mimetype="application/json", status=201)
+        
         
 class PostDetailEndpoint(Resource):
 
@@ -55,64 +54,57 @@ class PostDetailEndpoint(Resource):
         
 
     def patch(self, id):
-        # TODO: update post based on the data posted in the body
-        if Post.query.get(id) is None:
-            return Response(json.dumps({}), mimetype="application/json", status=404)
-
+        # TODO: UPDATE post based on the data posted in the body
         body = request.get_json()
-        # print(body)
-        post = Post.query.get(id)
-        # post.image_url=body.get('image_url')
-        post.image_url = body['image_url']
-        post.user_id = self.current_user.id
-        # post.caption = body.get('caption')
-        post.caption = body['caption']
-        # post.alt_text = body.get('alt_text')
-        post.alt_text = body['alt_text']
         
-        db.session.commit()
-        return Response(json.dumps(post.to_dict()), mimetype="application/json", status=200)
+        # user_ids = get_authorized_user_ids(self.current_user)
+        # posts = Post.query.filter(Post.user_id.in_(user_ids)).all()
+        # for post in posts:
+        #     if post.id == id:
+        #         post.image_url = body.get('image_url')
+        #         post.user_id = self.current_user.id
+        #         post.caption = body.get('caption')
+        #         post.alt_text = body.get('alt_text')
+        #         db.session.commit()
+        #         return Response(json.dumps(post.to_dict()), mimetype="application/json", status=200)
+        # return Response(json.dumps({}), mimetype="application/json", status=404)
+
+        if can_view_post(id, self.current_user):
+            post = Post.query.get(id)
+            post.image_url = body.get('image_url')
+            post.user_id = self.current_user.id
+            post.caption = body.get('caption')
+            post.alt_text = body.get('alt_text')
+            db.session.commit()
+            return Response(json.dumps(post.to_dict()), mimetype="application/json", status=200)
+        return Response(json.dumps({}), mimetype="application/json", status=404)
 
 
     def delete(self, id):
-        # TODO: delete post where "id"=id
-        
-        # if Post.query.filter_by(id=id) == 404 or Post.query.filter_by(id=id) is None:
-        #     return Response(json.dumps({}), mimetype="application/json", status=404)
-        if Post.query.get(id) is None:
-            return Response(json.dumps({}), mimetype="application/json", status=404)
-        Post.query.filter_by(id=id).delete()
-        db.session.commit()
-        delete_post = Post.query.get(id)
-        return Response(json.dumps({}), mimetype="application/json", status=200)
-        
-        # if id is None:
-        #     return Response(json.dumps({}), mimetype="application/json", status=404)
-
-        # Post.query.filter_by(id=id).delete()
-        # # db.session.commit()
-        # delete_post = Post.query.get(id)
-        # return Response(json.dumps(delete_post.to_dict()), mimetype="application/json", status=200)
-
-        # return Response(json.dumps({}), mimetype="application/json", status=200)
-
-
+        # TODO: DELETE post where "id"=id        
+        if can_view_post(id, self.current_user):
+            Post.query.filter_by(id=id).delete()
+            db.session.commit()
+            return Response(json.dumps({}), mimetype="application/json", status=200)
+        return Response(json.dumps({}), mimetype="application/json", status=404)
+    
+    
     def get(self, id):
-        # TODO: get the post based on the id
-        # if id not in get_authorized_user_ids(self.current_user):
-        #     return Response(json.dumps({}), mimetype="application/json", status=404)
-        post = Post.query.get(id)
-        if post is None:
-            return Response(json.dumps({}), mimetype="application/json", status=404)
-        return Response(json.dumps(post.to_dict()), mimetype="application/json", status=200)
-        
-        # unauthorized 404
-        # for aur_id in get_authorized_user_ids(self.current_user):
-        #     if id == aur_id:
-        #         if Post.query.get(id) is not None:
-        #             return Response(json.dumps(Post.query.get(id).to_dict()), mimetype="application/json", status=200)
+        # TODO: GET the post based on the id
+        # the user ids that current user is following (authorized)
+        # user_ids = get_authorized_user_ids(self.current_user)
+        # posts = Post.query.filter(Post.user_id.in_(user_ids)).all()
+        # for post in posts:
+        #     if post.id == id:
+        #         return Response(json.dumps(post.to_dict()), mimetype="application/json", status=200)
         # return Response(json.dumps({}), mimetype="application/json", status=404)
         
+        if can_view_post(id, self.current_user):
+            post = Post.query.get(id)
+            return Response(json.dumps(post.to_dict()), mimetype="application/json", status=200)
+        return Response(json.dumps({}), mimetype="application/json", status=404)
+
+
 def initialize_routes(api):
     api.add_resource(
         PostListEndpoint, 
