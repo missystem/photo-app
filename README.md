@@ -105,8 +105,12 @@ photo-app
 ### Questions:
 1. Cannot connect GitHub with Heroku?  
 [How to switch deployment method from GitHub to Heroku Git with all the changes/app code available in a GitHub repo](https://help.heroku.com/CKVOUPSY/how-to-switch-deployment-method-from-github-to-heroku-git-with-all-the-changes-app-code-available-in-a-github-repo)</br>
-2. How to create a hosted database?
-3. How to deploy? (Heroku)
+2. How to create a hosted database?√
+3. How to deploy? (Heroku)√
+4. How to get limit posts? √ 
+    * do we add '/api/posts?limit=<int:id>', '/api/posts?limit=<int:id>/' into initialize_routes? √ 
+5. How to pass unauthorized test?
+6. Is the way we get 404 correct? (by using query.get())
 
 #### [Navigation](#Navigation)
 
