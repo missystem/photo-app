@@ -61,8 +61,8 @@ class CommentDetailEndpoint(Resource):
         ## You can ONLY delete a comment that you created
         # print(id)
         # ------------------------ CODE START HERE ------------------------ #
-        # if not isinstance(id, int):
-        #     return Response(json.dumps({}), mimetype="application/json", status=404)
+        if not isinstance(id, int):
+            return Response(json.dumps({}), mimetype="application/json", status=404)
         if Comment.query.get(id) is None or Comment.query.get(id).user_id != self.current_user.id:
             return Response(json.dumps({}), mimetype="application/json", status=404)
         # print(Comment.query.get(id).user_id)
