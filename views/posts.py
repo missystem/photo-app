@@ -27,7 +27,7 @@ class PostListEndpoint(Resource):
         # limit = args.get('limit') or 10    # 10 is the default
 
         if not args.get('limit'):
-            limit = 10
+            limit = 20
         else:
             try:
                 limit = int(args.get('limit'))
