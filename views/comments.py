@@ -2,6 +2,7 @@ from flask import Response, request
 from flask_restful import Resource
 import json
 from models import db, Comment, Post
+from views import can_view_post
 
 class CommentListEndpoint(Resource):
 
@@ -9,10 +10,45 @@ class CommentListEndpoint(Resource):
         self.current_user = current_user
     
     def post(self):
-        # create a new "Comment" based on the data posted in the body 
+        # TODO: create a new "Comment" based on the data posted in the body 
+        ## Create a new comment associated with the specified pot
+        ## post_id: int (required)
+        ## text: string (required)
+        ## Response Type: Comment object
         body = request.get_json()
         print(body)
-        return Response(json.dumps({}), mimetype="application/json", status=201)
+        # ------------------------ CODE START HERE ------------------------ #
+        ## Check if input did not meet required 2 itemss:
+        if len(body) < 2:
+            return Response(json.dumps({}), mimetype="application/json", status=400)
+        ## Check if post_id is int:
+        try:
+            post_id = int(body.get('post_id'))
+        except:
+            return Response(json.dumps({}), mimetype="application/json", status=400)
+        ## Check if post exists in all posts
+        if Post.query.get(post_id) is None:
+            return Response(json.dumps([]), mimetype="application/json", status=404)
+        ## Check if the user is authorized (followed by the current user)
+        ## Use can_view_post()
+        if not can_view_post(post_id, self.current_user):
+            return Response(json.dumps([]), mimetype="application/json", status=404)
+        
+        text = body.get('text')
+        user_id = self.current_user.id
+        
+        new_comment = Comment (
+            text,
+            user_id,
+            post_id
+        )
+        
+        db.session.add(new_comment)
+        db.session.commit()
+        
+        # ----------------------------------------------------------------- #
+
+        return Response(json.dumps(new_comment.to_dict()), mimetype="application/json", status=201)
         
 class CommentDetailEndpoint(Resource):
 
@@ -21,8 +57,20 @@ class CommentDetailEndpoint(Resource):
   
     def delete(self, id):
         # delete "Comment" record where "id"=id
-        print(id)
+        ## Delete a comment
+        ## You can ONLY delete a comment that you created
+        # print(id)
+        # ------------------------ CODE START HERE ------------------------ #
+        # if not isinstance(id, int):
+        #     return Response(json.dumps({}), mimetype="application/json", status=404)
+        if Comment.query.get(id) is None or Comment.query.get(id).user_id != self.current_user.id:
+            return Response(json.dumps({}), mimetype="application/json", status=404)
+        # print(Comment.query.get(id).user_id)
+        
+        Comment.query.filter_by(id=id).delete()
+        db.session.commit()
         return Response(json.dumps({}), mimetype="application/json", status=200)
+        # ----------------------------------------------------------------- #
 
 
 def initialize_routes(api):
