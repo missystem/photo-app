@@ -112,6 +112,22 @@ photo-app
 5. How to pass unauthorized test?
 6. Is the way we get 404 correct? (by using query.get())
 
+
+### What to Turn In:
+* 15 points for GET requests
+* 20 points for POST/PATCH/DELETE requests
+* 5 points for deploying to Heroku
+ 
+* A link to Heroku deployment: 
+  * <https://photo-app-s22.herokuapp.com/api>
+* DB_URL on Heroku Postgres (for automated tests)
+  * DB_URL=postgresql://gdwlazslaowivm:59bf67d9a2318cf7e69dcb59041074f51be1de5298fc729740ae5c52ef2fa3f1@ec2-3-209-124-113.compute-1.amazonaws.com:5432/dbvmk72il51lqt
+* A zip file of code
+* list partner
+  * Tianyi Wu, GitHub: ALo0f
+* List what extra credit you did as a comment
+
+
 #### [Navigation](#Navigation)
 
 
