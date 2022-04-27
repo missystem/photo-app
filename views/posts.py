@@ -47,7 +47,7 @@ class PostListEndpoint(Resource):
     def post(self): # HTTP POST
         # TODO: CREATE a new post based on the data posted in the body 
         body = request.get_json()
-        if len(body) == 0:
+        if len(body) < 1:
             return Response(json.dumps({}), mimetype="application/json", status=400)
         new_post = Post (
             image_url=body.get('image_url'),
