@@ -19,10 +19,9 @@ class FollowerListEndpoint(Resource):
         follower_list = []
         for follower in followers:
             if follower.following_id == self.current_user.id:
-                follower_list.append(follower.user_id)
+                follower_list.append(follower.to_dict_follower())
+                # follower_list.append(follower.user_id)
         return Response(json.dumps(follower_list), mimetype="application/json", status=200)
-
-        # return Response(json.dumps([]), mimetype="application/json", status=200)
 
 
 def initialize_routes(api):
