@@ -13,20 +13,20 @@ class FollowingListEndpoint(Resource):
     
     def get(self):
         # TODO: return all of the "following" records that the current user is following
-        # Query followings from database
-        followings = Following.query\
-            .filter(Following.user_id == self.current_user.id)\
-            .order_by(Following.following_id)\
-            .all()
-        # Add followings to a list
-        following_list = []
-        for f in followings:
-            if f.follower.id == self.current_user.id:
-                following_list.append(f.to_dict_following())
+        # ## Query followings from database
+        # followings = Following.query\
+        #     .filter(Following.user_id == self.current_user.id)\
+        #     .order_by(Following.following_id)\
+        #     .all()
+        # ## Add followings to a list
+        # following_list = []
+        # for f in followings:
+        #     if f.follower.id == self.current_user.id:
+        #         following_list.append(f.to_dict_following())
                 
-        # followings = Following.query.filter_by(user_id = self.current_user.id)
-        # following_list = [f.to_dict_following() for f in followings]
-        # get info from following
+        followings = Following.query.filter_by(user_id = self.current_user.id)
+        following_list = [f.to_dict_following() for f in followings]
+        ## get info from following
         return Response(json.dumps(following_list), mimetype="application/json", status=200)
         
         
@@ -34,30 +34,24 @@ class FollowingListEndpoint(Resource):
         # TODO: create a new "following" record based on the data posted in the body 
         body = request.get_json()
         
-        # Check if user_id is provided:
-        if len(body) == 0:
-            return Response(json.dumps({}), mimetype="application/json", status=400)
+        ## Check if user_id is provided:
+        if not body.get('user_id'):
+            return Response(json.dumps({"message": "'user_id' is required."}), mimetype="application/json", status=400)
         
         user_ids = get_authorized_user_ids(self.current_user)
-        # if user_id is not int -> invalid:
+        ## if user_id is not int -> invalid:
         try:
             new_fo_id = int(body.get('user_id'))
         except:
-            return Response(json.dumps({}), mimetype="application/json", status=400)
+            return Response(json.dumps({"message": "Given id is invalid."}), mimetype="application/json", status=400)
         
-        # if user does not exists:
-        usr_list = []
-        all_users = User.query.all()
-        # print(all_users)
-        for usr in all_users:
-            usr_list.append(usr.to_dict().get('id'))
-        # print(usr_list)
-        if new_fo_id not in usr_list:
-            return Response(json.dumps({}), mimetype="application/json", status=404)
-        
-        # if user_id is already being followed:
+        ## if the id is not an existing user:
+        if not User.query.get(new_fo_id):
+            return Response(json.dumps({"message": "{0} is invalid.".format(new_fo_id)}), mimetype="application/json", status=404)
+
+        ## if user_id is already being followed:
         if new_fo_id in user_ids:
-            return Response(json.dumps({}), mimetype="application/json", status=400)
+            return Response(json.dumps({"message": "You already followed user: {0}.".format(new_fo_id)}), mimetype="application/json", status=400)
         
         new_following = Following (
             user_id=self.current_user.id,
@@ -81,31 +75,21 @@ class FollowingDetailEndpoint(Resource):
         try:
             id = int(id)
         except:
-            return Response(json.dumps({}), mimetype="application/json", status=400)
-
-        # usr_list = []
-        # all_users = User.query.all()
-        # # print(all_users)
-        # for usr in all_users:
-        #     usr_list.append(usr.to_dict().get('id'))
-        # if id not in usr_list:
-        #     return Response(json.dumps({}), mimetype="application/json", status=404)
-        # # print(usr_list)
+            return Response(json.dumps({"message": "given id is invalid"}), mimetype="application/json", status=400)
         
-        # user_ids = get_authorized_user_ids(self.current_user)
-        # # print(user_ids)
-        # if id not in user_ids:
-        #     return Response(json.dumps({}), mimetype="application/json", status=404)
-        
-        # ==> better way: Query from Following by using id
         following = Following.query.get(id)
-        # check if the following exists or it's != the curr user
-        if not following or following.user_id != self.current_user.id:
-            return Response(json.dumps({}), mimetype="application/json", status=404)
+        ## check if the following exists
+        if not following:
+            return Response(json.dumps({"message": "You did not follow the user: {0}.".format(id)}), mimetype="application/json", status=404)
+        ## it's != the curr user -> cannot follow yourself
+        if following.user_id != self.current_user.id:
+            return Response(json.dumps({"message": "You cannot follow yourself."}), mimetype="application/json", status=404)
+        ## delete the following that id=id
         Following.query.filter_by(id=id).delete()
+        ## commit the change to the database (to persist the changes)
         db.session.commit()
 
-        return Response(json.dumps({}), mimetype="application/json", status=200)
+        return Response(json.dumps({"message": "You have successfully unfollowed {0}.".format(id)}), mimetype="application/json", status=200)
 
 
 def initialize_routes(api):
