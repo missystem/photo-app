@@ -20,7 +20,7 @@ class FollowerListEndpoint(Resource):
         # for follower in followers:
         #     if follower.following_id == self.current_user.id:
         #         followers_json.append(follower.to_dict_follower())
-        followers = Following.query.filter_by(following_id=self.current_user.id)
+        followers = Following.query.filter_by(following_id=self.current_user.id).all()
         followers_json = [f.to_dict_follower() for f in followers]
         return Response(json.dumps(followers_json), mimetype="application/json", status=200)
         
