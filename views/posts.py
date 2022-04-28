@@ -31,7 +31,7 @@ class PostListEndpoint(Resource):
             return Response(json.dumps({"message": "the limit parameter is invalid"}), mimetype="application/json", status=400)
         if limit > 50 or limit < 1:
             ## too large :
-            return Response(json.dumps({}), mimetype="application/json", status=400)
+            return Response(json.dumps({"message": "the limit parameter is invalid"}), mimetype="application/json", status=400)
         ## Getting all of the user_ids that the current user is following. 
         ## It also includes the current user's id
         ## This list of user_ids can be used to filter the posts
