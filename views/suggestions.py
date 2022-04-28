@@ -47,15 +47,16 @@ class SuggestionsListEndpoint(Resource):
     
     def get(self):
         # TODO: suggestions should be any user with an ID that's not in this list:
-        # List of suggested users to follow
-        # use the User data model to get this information
-        # just display 7 users that the current user isn't already following
-        # ----------- code start here ------------
+        ## OPTIMIZED VERSION
+        ## List of suggested users to follow
+        ## use the User data model to get this information
+        ## just display 7 users that the current user isn't already following
+        # ---------------------- code start here -----------------------
         user_ids = get_authorized_user_ids(self.current_user)
-        # query 7 users from all users but exclude user_ids (followings)
+        ## query 7 users from all users but exclude user_ids (followings)
         suggestions = User.query.filter(~User.id.in_(user_ids)).limit(7).all()
         suggestions_json = [t.to_dict() for t in suggestions]
-        # ----------------------------------------
+        # --------------------------------------------------------------
         return Response(json.dumps(suggestions_json), mimetype="application/json", status=200)
 
 
