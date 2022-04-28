@@ -15,31 +15,29 @@ class PostLikesListEndpoint(Resource):
         ## post_id: int (required)
         ## LikePost object
         body = request.get_json()
-        print(body)
+        # print(body)
         # ------------------------ CODE START HERE ------------------------ #
-        ## Check if input did not meet required 1 itemss:
-        # if len(body) < 1:
-        #     return Response(json.dumps({}), mimetype="application/json", status=400)
         ## Check if post_id is int:
         try:
             post_id = int(body.get('post_id'))
         except:
-            return Response(json.dumps({}), mimetype="application/json", status=400)
+            return Response(json.dumps({"message": "the post_id is invalid."}), mimetype="application/json", status=400)
         ## Check if post exists in all posts
-        if Post.query.get(post_id) is None:
-            return Response(json.dumps([]), mimetype="application/json", status=404)
+        if not Post.query.get(post_id):
+            return Response(json.dumps({"message": "post_id={0} does not exist.".format(post_id)}), mimetype="application/json", status=404)
         ## Check if the user is authorized (followed by the current user)
-        ## Use can_view_post()
         if not can_view_post(post_id, self.current_user):
-            return Response(json.dumps([]), mimetype="application/json", status=404)
+            return Response(json.dumps({"message": "You cannot view this post."}), mimetype="application/json", status=404)
         ## Check if post_id exists
         lp_query = LikePost.query.filter_by(user_id=self.current_user.id).all()
         lp_post_ids = [lp.post_id for lp in lp_query]
         if post_id in lp_post_ids:
-            return Response(json.dumps([]), mimetype="application/json", status=400)
+            return Response(json.dumps({"message": "You already liked post_id={0}.".format(post_id)}), mimetype="application/json", status=400)
 
         user_id = self.current_user.id
+        ## Create a new bookmark
         liked = LikePost (user_id, post_id)
+        ## add to database and commit
         db.session.add(liked)
         db.session.commit()
         # ----------------------------------------------------------------- #
@@ -60,10 +58,11 @@ class PostLikesDetailEndpoint(Resource):
         lp_ids = [lp.id for lp in lp_query]
         if id in lp_ids:
             LikePost.query.filter_by(id=id).delete()
+            ## commit changes to the database
             db.session.commit()
             return Response(json.dumps([]), mimetype="application/json", status=200)
         # ----------------------------------------------------------------- #
-        return Response(json.dumps({}), mimetype="application/json", status=404)
+        return Response(json.dumps({"message": "id={0} is invalid.".format(id)}), mimetype="application/json", status=404)
 
 
 
