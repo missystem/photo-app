@@ -20,19 +20,19 @@ class CommentListEndpoint(Resource):
         # ------------------------ CODE START HERE ------------------------ #
         ## Check if input did not meet required 2 itemss:
         if len(body) < 2:
-            return Response(json.dumps({}), mimetype="application/json", status=400)
+            return Response(json.dumps({"message": "'text' and 'post_id' are required"}), mimetype="application/json", status=400)
         ## Check if post_id is int:
         try:
             post_id = int(body.get('post_id'))
         except:
-            return Response(json.dumps({}), mimetype="application/json", status=400)
+            return Response(json.dumps({"message": "the given post_id is invalid"}), mimetype="application/json", status=400)
         ## Check if post exists in all posts
         if Post.query.get(post_id) is None:
-            return Response(json.dumps([]), mimetype="application/json", status=404)
+            return Response(json.dumps({"message": "post_id={0} is invalid.".format(post_id)}), mimetype="application/json", status=404)
         ## Check if the user is authorized (followed by the current user)
         ## Use can_view_post()
         if not can_view_post(post_id, self.current_user):
-            return Response(json.dumps([]), mimetype="application/json", status=404)
+            return Response(json.dumps({"message": "You cannot view this post: {0}.".format(post_id)}), mimetype="application/json", status=404)
         
         text = body.get('text')
         user_id = self.current_user.id
@@ -62,16 +62,17 @@ class CommentDetailEndpoint(Resource):
         # print(id)
         # ------------------------ CODE START HERE ------------------------ #
         ## Check if the id is int
-        if not isinstance(id, int):
-            return Response(json.dumps({}), mimetype="application/json", status=404)
+        try:
+            id = int(id)
+        except:
+            return Response(json.dumps({"message": "the given id is invalid."}), mimetype="application/json", status=404)
         ## Check if the id exists and sent out by current user
         if Comment.query.get(id) is None or Comment.query.get(id).user_id != self.current_user.id:
-            return Response(json.dumps({}), mimetype="application/json", status=404)
+            return Response(json.dumps({"message": "id={0} does not exist.".format(id)}), mimetype="application/json", status=404)
         # print(Comment.query.get(id).user_id)
-        
         Comment.query.filter_by(id=id).delete()
         db.session.commit()
-        return Response(json.dumps({}), mimetype="application/json", status=200)
+        return Response(json.dumps({"message": "Comment id={0} was successfully deleted.".format(id)}), mimetype="application/json", status=200)
         # ----------------------------------------------------------------- #
 
 
