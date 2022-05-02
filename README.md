@@ -128,6 +128,62 @@ photo-app
 * List what extra credit you did as a comment
 
 
+```
+SMART SUGGESTIONS
+    """
+    def get(self):
+        # suggestions should be any user with an ID that's not in this list:
+        # List of suggested users to follow
+        # use the User data model to get this information
+        # just display 7 users that the current user isn't already following
+        
+        # ----------- code start here ------------
+        following_ids = get_authorized_user_ids(self.current_user)
+        print(f"following_ids: {following_ids}")
+        all_users = User.query.all()
+        all_users_ids = [usr.to_dict().get('id') for usr in all_users]
+        
+        print(self.current_user.id)
+        print(all_users_ids)
+        
+        sug_list = [x for x in all_users_ids if x not in following_ids]
+        print(sug_list)
+        
+        # display any 7 users that the current user isn't already following
+        random7users = random.choices(sug_list, k=7)
+        print(f"random 7 users: {random7users}")
+        
+        suggestions = []
+        for i in random7users:
+            suggestions.append(User.query.get(i).to_dict())
+        print(f"suggestions: {suggestions}")
+        # ----------------------------------------
+        return Response(json.dumps(suggestions), mimetype="application/json", status=200)
+    """
+
+    """
+    def get(self):
+        ## smart suggestions
+        all_followings = get_authorized_user_ids(self.current_user)
+        print(all_followings)
+        all_followings.remove(self.current_user.id)
+        print(all_followings)
+        suggestions = set()
+        for following in all_followings:
+            fosfo = get_authorized_user_ids(User.query.get(following))
+            fosfo.remove(following)
+            for fo in fosfo:
+                suggestions.add(fo)
+        suggestions = list(suggestions)
+        print(suggestions)
+        sug_list = random.choices(suggestions, k=7)
+        print(sug_list)
+        suggestions_json = [User.query.get(t).to_dict() for t in sug_list]
+        return Response(json.dumps(suggestions_json), mimetype="application/json", status=200)
+    """
+
+```
+
 #### [Navigation](#Navigation)
 
 
