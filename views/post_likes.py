@@ -35,7 +35,7 @@ class PostLikesListEndpoint(Resource):
             return Response(json.dumps({"message": "You already liked post_id={0}.".format(post_id)}), mimetype="application/json", status=400)
 
         user_id = self.current_user.id
-        ## Create a new bookmark
+        ## Like a new post
         liked = LikePost (user_id, post_id)
         ## add to database and commit
         db.session.add(liked)
@@ -49,8 +49,7 @@ class PostLikesDetailEndpoint(Resource):
         self.current_user = current_user
     
     def delete(self, id):
-        # delete "like_post" where "id"=id
-        ## Delete a like
+        ## DELETE "like_post" where "id"=id
         ## You can ONLY delete a "like" that you created
         print(id)
         # ------------------------ CODE START HERE ------------------------ #
@@ -60,7 +59,7 @@ class PostLikesDetailEndpoint(Resource):
             LikePost.query.filter_by(id=id).delete()
             ## commit changes to the database
             db.session.commit()
-            return Response(json.dumps([]), mimetype="application/json", status=200)
+            return Response(json.dumps({"message": "You have successfully unliked post id={0}.".format(id)}), mimetype="application/json", status=200)
         # ----------------------------------------------------------------- #
         return Response(json.dumps({"message": "id={0} is invalid.".format(id)}), mimetype="application/json", status=404)
 
