@@ -51,10 +51,12 @@ class PostLikesDetailEndpoint(Resource):
     def delete(self, id):
         ## DELETE "like_post" where "id"=id
         ## You can ONLY delete a "like" that you created
-        print(id)
+        # print(id)
         # ------------------------ CODE START HERE ------------------------ #
+        ## query all post_likes by current user
         lp_query = LikePost.query.filter_by(user_id=self.current_user.id).all()
         lp_ids = [lp.id for lp in lp_query]
+        ## if id in current user's post_likes
         if id in lp_ids:
             LikePost.query.filter_by(id=id).delete()
             ## commit changes to the database
