@@ -35,7 +35,7 @@ initialize_routes(api)
 
 @app.route('/')
 def home():
-    # from hw2
+    # from hw2 - extra credit 1
     current_user = app.current_user
     user_ids = get_authorized_user_ids(current_user)
     return render_template(
