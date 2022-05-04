@@ -122,6 +122,7 @@ photo-app
   * <https://photo-app-s22.herokuapp.com/api>
   * <https://photo-app-s22.herokuapp.com/>
 * DB_URL on Heroku Postgres (for automated tests)
+  * DATABASE_URL=postgres://gdwlazslaowivm:59bf67d9a2318cf7e69dcb59041074f51be1de5298fc729740ae5c52ef2fa3f1@ec2-3-209-124-113.compute-1.amazonaws.com:5432/dbvmk72il51lqt
   * DB_URL=postgresql://gdwlazslaowivm:59bf67d9a2318cf7e69dcb59041074f51be1de5298fc729740ae5c52ef2fa3f1@ec2-3-209-124-113.compute-1.amazonaws.com:5432/dbvmk72il51lqt
 * A zip file of code
 * list partner
@@ -129,7 +130,7 @@ photo-app
 * List what extra credit you did as a comment
   * Modify the flask template from HW2 so that it uses data from your database (instead of using the random data from HW2)
   * Create a brand new endpoint that allows the user to like other people’s comments.
-  
+
 
 
 ```
