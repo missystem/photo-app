@@ -38,7 +38,7 @@ class PostListEndpoint(Resource):
         user_ids = get_authorized_user_ids(self.current_user)
         posts = Post.query.filter(Post.user_id.in_(user_ids)).limit(limit).all()
         
-        posts_json = [post.to_dict() for post in posts]
+        posts_json = [post.to_dict(user=self.current_user) for post in posts]
         return Response(json.dumps(posts_json), mimetype="application/json", status=200)
 
         
@@ -101,7 +101,7 @@ class PostDetailEndpoint(Resource):
         ## we need to query the database where id=id
         if can_view_post(id, self.current_user):
             post = Post.query.get(id)
-            return Response(json.dumps(post.to_dict()), mimetype="application/json", status=200)
+            return Response(json.dumps(post.to_dict(user=self.current_user)), mimetype="application/json", status=200)
         return Response(json.dumps({"message": "id={0} is invalid".format(id)}), mimetype="application/json", status=404)
 
     ## Sarah's version:
