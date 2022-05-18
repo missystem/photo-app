@@ -106,7 +106,7 @@ const displayComments = post => {
                     class="link open comments"  
                     aria-label="Comment Button" 
                     data-post-id=${post.id} 
-                    onclick="showModal(event)">
+                    onclick="openModal(event)">
                     View all ${ post.comments.length } comments
                 </button>
             `
@@ -135,9 +135,7 @@ const post2Modal = post => {
     return `
         <div id="modal">
             <div class="modal-bg" aria-hidden="false" role="dialog">
-            <button class="close" 
-                aria-label="Close the modal window" 
-                onclick="closeModal(event);">
+            <button class="close" aria-label="Close Button" onclick="closeModal(event);">
                 <i class="fas fa-times"></i>
             </button>
             <div class="modal">
@@ -362,7 +360,7 @@ const redrawCard = post => {
 
 // ---------------------------------- Modal -------------------------------
 // - CLick "view all ___ comments" to pop up the modal
-const showModal = ev => {
+const openModal = ev => {
     // console.log("updata modal state");
     const postId = Number(ev.currentTarget.dataset.postId);
     document.body.style.overflowY = "hidden";
