@@ -61,7 +61,7 @@ class PostLikesDetailEndpoint(Resource):
             LikePost.query.filter_by(id=id).delete()
             ## commit changes to the database
             db.session.commit()
-            return Response(json.dumps({"message": "You have successfully unliked post id={0}.".format(id)}), mimetype="application/json", status=200)
+            return Response(json.dumps({"message": "Like id={0} successfully deleted.".format(id)}), mimetype="application/json", status=200)
         # ----------------------------------------------------------------- #
         return Response(json.dumps({"message": "id={0} is invalid.".format(id)}), mimetype="application/json", status=404)
 

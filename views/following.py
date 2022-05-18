@@ -51,7 +51,7 @@ class FollowingListEndpoint(Resource):
 
         ## if user_id is already being followed:
         if new_fo_id in user_ids:
-            return Response(json.dumps({"message": "You already followed user: {0}.".format(new_fo_id)}), mimetype="application/json", status=400)
+            return Response(json.dumps({"message": "Database Insert error. Are you already following user={0}? Please see the log files.".format(new_fo_id)}), mimetype="application/json", status=400)
         
         new_following = Following (
             user_id=self.current_user.id,
@@ -75,21 +75,23 @@ class FollowingDetailEndpoint(Resource):
         try:
             id = int(id)
         except:
-            return Response(json.dumps({"message": "given id is invalid"}), mimetype="application/json", status=400)
+            return Response(json.dumps({"message": "Given id is invalid"}), mimetype="application/json", status=400)
         
         following = Following.query.get(id)
         ## check if the following exists
         if not following:
-            return Response(json.dumps({"message": "You did not follow the user: {0}.".format(id)}), mimetype="application/json", status=404)
+            return Response(json.dumps({"message": "Following record does not exist."}), mimetype="application/json", status=404)
+        
         ## it's != the curr user -> cannot follow yourself
         if following.user_id != self.current_user.id:
-            return Response(json.dumps({"message": "You cannot follow yourself."}), mimetype="application/json", status=404)
+            return Response(json.dumps({"message": "Current user is unauthorized."}), mimetype="application/json", status=404)
+        
+        unfo_username = following.to_dict_following().get('following').get('username')
         ## delete the following that id=id
         Following.query.filter_by(id=id).delete()
         ## commit the change to the database (to persist the changes)
         db.session.commit()
-
-        return Response(json.dumps({"message": "You have successfully unfollowed {0}.".format(id)}), mimetype="application/json", status=200)
+        return Response(json.dumps({"message": "You have successfully unfollowed {0} (user={1})).".format(unfo_username, following.following_id)}), mimetype="application/json", status=200)
 
 
 def initialize_routes(api):
