@@ -462,8 +462,9 @@ const toggleFollow = ev => {
     const elem = ev.currentTarget;
     // console.log('Handle Follow Functionality')
 
-    // if (elem.getAttribute('aria-checked') === 'false') {
-    if (elem.innerHTML === 'follow') {
+
+    // if (elem.innerHTML === 'follow') {
+    if (elem.getAttribute('aria-checked') === 'false') {
         // issue post request:
         followUser(elem.dataset.suggestionId, elem);
     } else {
