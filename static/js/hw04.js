@@ -103,7 +103,7 @@ const displayComments = post => {
             // display button
             comments += `              
                 <button 
-                    class="link open comments"  
+                    class="open link comments"  
                     aria-label="Comment Button" 
                     data-post-id=${post.id} 
                     onclick="openModal(event)">
@@ -134,24 +134,25 @@ const allComment = (post) => {
 const post2Modal = post => {
     return `
         <div id="modal">
-            <div class="modal-bg" aria-hidden="false" role="dialog">
-            <button class="close" aria-label="Close Button" onclick="closeModal(event);">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="modal">
-                <div class="featured-image" style="background-image: url('${post.image_url}');"></div>
-                <div class="container">
-                    <h3>
-                        <img class="pic" alt="${post.alt_text}" src="${post.user.thumb_url}" /> 
-                        ${post.user.username}
-                    </h3>
-                    <div class="body">
-                        <div>
-                            ${allComment(post)}
+            <div class="modal-bg">
+                
+                <div class="modal hidden" aria-hidden="true" role="dialog">
+                    <button class="close" aria-label="Close Button" onclick="closeModal(event);">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <div class="featured-image" style="background-image: url('${post.image_url}');"></div>
+                    <div class="container">
+                        <h3>
+                            <img class="pic" alt="${post.alt_text}" src="${post.user.thumb_url}" /> 
+                            ${post.user.username}
+                        </h3>
+                        <div class="body">
+                            <div>
+                                ${allComment(post)}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
         </div>
     `
@@ -360,20 +361,41 @@ const redrawCard = post => {
 
 // ---------------------------------- Modal -------------------------------
 // - CLick "view all ___ comments" to pop up the modal
+
+
+let modalElem = document.querySelector('body');
+
 const openModal = ev => {
-    // console.log("updata modal state");
     const postId = Number(ev.currentTarget.dataset.postId);
+
     document.body.style.overflowY = "hidden";
+
     redrawPost(postId, post => {
         const html = post2Modal(post);
         document.querySelector(`#post_${post.id}`).insertAdjacentHTML('beforeend', html);
+
+        modalElem = document.querySelector('.modal');
+        modalElem.classList.remove('hidden');
+        modalElem.setAttribute('aria-hidden', 'false');
     });
 };
 
 const closeModal = ev => {
+    modalElem.classList.add('hidden');
+    modalElem.setAttribute('aria-hidden', 'true');
+
     document.querySelector('.modal-bg').remove();
     document.body.style.overflowY = "auto";
 };
+
+document.addEventListener('focus', function(event) {
+    console.log('focus');
+    if (modalElem.getAttribute('aria-hidden') === 'false' && !modalElem.contains(event.target)) {
+        console.log('back to top!');
+        event.stopPropagation();
+        document.querySelector('.close').focus();
+    }
+}, true);
 
 // ----------------------------- Add a Comment -----------------------------
 // TODO
