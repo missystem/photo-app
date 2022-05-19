@@ -381,10 +381,12 @@ const openModal = ev => {
 };
 
 const closeModal = ev => {
+
+    document.body.style.overflowY = "auto";
+
     modalElem.classList.add('hidden');
     modalElem.setAttribute('aria-hidden', 'true');
 
-    document.body.style.overflowY = "auto";
     document.querySelector('.modal-bg').remove();
     document.querySelector('.open').focus();
 
