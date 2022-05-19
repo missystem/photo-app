@@ -133,10 +133,10 @@ const allComment = (post) => {
 
 const post2Modal = post => {
     return `
-        <div id="modal">
+        
             <div class="modal-bg">
                 
-                <div class="modal hidden" aria-hidden="true" role="dialog">
+                <div class="modal">
                     <button class="close" aria-label="Close Button" onclick="closeModal(event);">
                         <i class="fas fa-times"></i>
                     </button>
@@ -154,7 +154,7 @@ const post2Modal = post => {
                     </div>
                 </div>
             </div>
-        </div>
+        
     `
 };
 
@@ -363,7 +363,7 @@ const redrawCard = post => {
 // - CLick "view all ___ comments" to pop up the modal
 
 
-let modalElem = document.querySelector('body');
+let modalElem = document.querySelector('#modal');
 
 const openModal = ev => {
     const postId = Number(ev.currentTarget.dataset.postId);
@@ -372,11 +372,11 @@ const openModal = ev => {
 
     redrawPost(postId, post => {
         const html = post2Modal(post);
-        document.querySelector(`#post_${post.id}`).insertAdjacentHTML('beforeend', html);
-
-        modalElem = document.querySelector('.modal');
+        document.querySelector('#modal').insertAdjacentHTML('beforeend', html);
+        modalElem = document.querySelector('#modal');
         modalElem.classList.remove('hidden');
         modalElem.setAttribute('aria-hidden', 'false');
+        document.querySelector('.close').focus();
     });
 };
 
@@ -384,8 +384,10 @@ const closeModal = ev => {
     modalElem.classList.add('hidden');
     modalElem.setAttribute('aria-hidden', 'true');
 
-    document.querySelector('.modal-bg').remove();
     document.body.style.overflowY = "auto";
+    document.querySelector('.modal-bg').remove();
+    document.querySelector('.open').focus();
+
 };
 
 document.addEventListener('focus', function(event) {
