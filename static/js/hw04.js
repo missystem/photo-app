@@ -248,6 +248,7 @@ const likePost = (elem) => {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': getCookie('csrf_access_token')
             },
             body: JSON.stringify(postData)
         })
@@ -267,6 +268,7 @@ const unlikePost = (elem) => {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': getCookie('csrf_access_token')
             }
         })
         .then(response => response.json())
@@ -303,6 +305,7 @@ const bookmarkPost = (elem) => {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': getCookie('csrf_access_token')
             },
             body: JSON.stringify(postData)
         })
@@ -322,6 +325,7 @@ const unbookmarkPost = (elem) => {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': getCookie('csrf_access_token')
             }
         })
         .then(response => response.json())
@@ -402,29 +406,6 @@ document.addEventListener('focus', function(event) {
 }, true);
 
 // ----------------------------- Add a Comment -----------------------------
-// TODO
-// const likePost = (elem) => {
-//     // issue a post request 
-//     const postId = Number(elem.dataset.postId);
-//     console.log('like post', elem);
-//     const postData = {
-//         "post_id": postId
-//     };
-//     // console.log(postData)
-//     fetch(`/api/posts/likes/`, {
-//             method: "POST",
-//             headers: {
-//                 'Content-Type': 'application/json',
-//             },
-//             body: JSON.stringify(postData)
-//         })
-//         .then(response => response.json())
-//         .then(data => {
-//             console.log(data);
-//             console.log("redraw the post");
-//             redrawPost(postId);
-//         });
-// };
 
 const addComment = ev => {
     // Add Comment
@@ -443,6 +424,7 @@ const addComment = ev => {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': getCookie('csrf_access_token')
             },
             body: JSON.stringify(postData)
         })
@@ -506,6 +488,7 @@ const followUser = (suggestionId, elem) => {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': getCookie('csrf_access_token')
             },
             // exchange data to/from a web server
             // When sending data to a web server, the data has to be a string.
@@ -528,6 +511,10 @@ const unfollowUser = (followingId, elem) => {
     const deleteURL = `/api/following/${followingId}`;
     fetch(deleteURL, {
             method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': getCookie('csrf_access_token')
+            },
         })
         .then(response => response.json())
         .then(data => {
@@ -554,6 +541,25 @@ const displaySuggestions = () => {
 }
 
 // ==========================================================================
+
+
+const getCookie = key => {
+    let name = key + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    console.log(decodedCookie);
+    let ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        console.log(c);
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+};
 
 const initPage = () => {
     displayStories();
