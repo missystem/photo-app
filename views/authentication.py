@@ -5,6 +5,8 @@ import flask_jwt_extended
 
 def logout():
     response = make_response(redirect('/login', 302))
+    # logout: delete the cookies and unset the cookies
+    # then redirect to the login screen
     flask_jwt_extended.unset_jwt_cookies(response)
     return response
 
@@ -24,6 +26,8 @@ def login():
         
         if user.check_password(password):
             # create a new token with the user id inside
+            # 1. set a cookie
+            # 2. redirect to the home screen
             access_token = flask_jwt_extended.create_access_token(identity=user.id)
             resp = make_response(redirect('/', 302))
             # resp = make_response('Hello world!')

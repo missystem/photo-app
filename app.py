@@ -1,3 +1,4 @@
+import datetime
 from dotenv import load_dotenv
 load_dotenv()
 from flask import Flask, request
@@ -22,6 +23,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["JWT_SECRET_KEY"] = os.environ.get('JWT_SECRET')
 app.config["JWT_TOKEN_LOCATION"] = ["headers", "cookies"]
 app.config["JWT_COOKIE_SECURE"] = False
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = datetime.timedelta(minutes=15)
 
 # https://github.com/vimalloc/flask-jwt-extended/issues/308
 app.config['PROPAGATE_EXCEPTIONS'] = True 
@@ -35,15 +37,21 @@ api = Api(app)
 with app.app_context():
     app.current_user = User.query.filter_by(id=12).one()
 
-# # TODO: replace the hard-coded user #12 code (above) with this code, which
-# # figures out who is logged into the system based on the JWT.
-# @jwt.user_lookup_loader
-# def user_lookup_callback(_jwt_header, jwt_data):
-#     # print('JWT data:', jwt_data)
-#     # https://flask-jwt-extended.readthedocs.io/en/stable/automatic_user_loading/
-#     user_id = jwt_data["sub"]
-#     print('user_id =', user_id)
-#     return User.query.filter_by(id=user_id).one_or_none()
+# TODO: replace the hard-coded user #12 code (above) with this code, which
+# figures out who is logged into the system based on the JWT.
+# session filter, every single time, a request is made to the server, this will execute
+# 1. read the token
+# 2. pull out the encoded user information and 
+# 3. then return the logged in user associated with the username
+# we need this function activated for the error message 
+# we can't use verify_jwt_in_request() until we have wired up user_lookup_callback()
+@jwt.user_lookup_loader
+def user_lookup_callback(_jwt_header, jwt_data):
+    # print('JWT data:', jwt_data)
+    # https://flask-jwt-extended.readthedocs.io/en/stable/automatic_user_loading/
+    user_id = jwt_data["sub"]
+    print('user_id =', user_id)
+    return User.query.filter_by(id=user_id).one_or_none()
 
 
 # Initialize routes for all of your API endpoints:
