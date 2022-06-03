@@ -20,6 +20,7 @@ app.static_folder = [
     os.path.join(app.root_path, 'static')
 ]
 
+
 # modify the root path to point to your React App:
 @app.route('/')
 @decorators.jwt_or_login
