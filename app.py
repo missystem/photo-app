@@ -11,7 +11,22 @@ from models import db, User, ApiNavigator
 from views import initialize_routes
 import decorators
 
+from flask_multistatic import MultiStaticFlask as Flask   # at the top
+from flask import send_from_directory                     # at the top
+
 app = Flask(__name__)
+app.static_folder = [
+    os.path.join(app.root_path, 'react-client', 'build', 'static'),
+    os.path.join(app.root_path, 'static')
+]
+
+# modify the root path to point to your React App:
+@app.route('/')
+@decorators.jwt_or_login
+def home():
+    # https://medium.com/swlh/how-to-deploy-a-react-python-flask-project-on-heroku-edb99309311
+    return send_from_directory(app.root_path + '/react-client/build', 'index.html')
+
 cors = CORS(app, 
     resources={r"/api/*": {"origins": '*'}}, 
     supports_credentials=True
