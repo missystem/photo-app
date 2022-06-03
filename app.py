@@ -74,13 +74,13 @@ def user_lookup_callback(_jwt_header, jwt_data):
 initialize_routes(api)
 
 # Server-side template for the homepage:
-@app.route('/')
-@decorators.jwt_or_login
-def home():
-    return render_template(
-        'starter-client.html', 
-        user=flask_jwt_extended.current_user
-    )
+# @app.route('/')
+# @decorators.jwt_or_login
+# def home():
+#     return render_template(
+#         'starter-client.html', 
+#         user=flask_jwt_extended.current_user
+#     )
 
 @app.route('/api')
 @app.route('/api/')
