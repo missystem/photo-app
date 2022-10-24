@@ -1,5 +1,5 @@
 [Photo App](https://photo-app-006.herokuapp.com/)
----  
+  
 ## Features  
 1. Login page
 2. Browser posts from people you're following
@@ -9,3 +9,7 @@
 6. View all comments
 7. Follow suggested users
 8. Logout
+
+---
+
+:new: Work on continuous features...
